@@ -1,4 +1,5 @@
 const Pokemon = require("../../models/pokemonModel");
+const mongoose = require("mongoose");
 const Trainer = require("../../models/trainersModel");
 const argon2 = require("argon2");
 const { createToken, validateToken, deleteToken } = require("./tokenMap");
@@ -314,14 +315,20 @@ async function getTrainerPokemon(req, res) {
 
 async function getOneTrainerPokemon(req, res) {
   try {
-    let targetTrainer = await Trainer.findOne({
-      Username: req.params.username,
-    });
-    let pokemon = targetTrainer.PokemonCollection.filter(
-      (pokemon) => pokemon._id.toString() === req.params.pokemonID
-    );
+    let objectId = new mongoose.Types.ObjectId(req.params.pokemonID);
+    console.log(objectId);
+    let results = await Trainer.aggregate([
+      { $match: { Username: req.params.username } },
+      { $unwind: "$PokemonCollection" },
+      {
+        $match: {
+          "PokemonCollection._id": objectId,
+        },
+      },
+      { $project: { pokemon: "$PokemonCollection" } },
+    ]);
     res.status(200).json({
-      pokemon: pokemon[0],
+      pokemon: results[0].pokemon,
     });
   } catch (error) {
     let errorObj = {

@@ -62,16 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             `;
+            // Get species info and update html
+            return axios.get(`/api/pokemon/${btn.dataset.speciesId}`, {
+              id: btn.dataset.pokemonId,
+            });
           }
-        })
-        .catch((error) => {
-          console.error("Request failed", error);
-        });
-
-      // Get species info and update html
-      axios
-        .get(`/api/pokemon/${btn.dataset.speciesId}`, {
-          id: btn.dataset.pokemonId,
         })
         .then((response) => {
           if (response.status === 200) {
@@ -119,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       // Show pokemon inspector
       gsap
-        .timeline({ delay: 0.2 })
+        .timeline({ delay: 0.3 })
         .set(pokemonInspector, { display: "block" })
         .to(pokemonInspector, { duration: 0.2, opacity: 1 });
     });
