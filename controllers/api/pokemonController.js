@@ -25,15 +25,18 @@ async function getPokemon(req, res) {
 
 async function getOnePokemon(req, res) {
   try {
-    let pokemon = await Pokemon.findOne({ _id: req.params.id });
-    let teamsOn = pokemon.TeamsOn.map((id) => id.toString());
-    let trainers = await Trainer.find({});
-    let filterTrainers = trainers.filter((trainer) =>
-      teamsOn.includes(trainer._id.toString())
-    );
+    const pokemon = await Pokemon.findOne({ _id: req.params.id }).exec();
+
+    if (!pokemon) {
+      return res.status(404).json({ message: "Pokemon not found" });
+    }
+
+    const teamsOn = pokemon.TeamsOn.map((id) => id.toString());
+    let trainers = await Trainer.find({ _id: { $in: teamsOn } }).exec();
+
     res.status(200).json({
       pokemonInfo: pokemon,
-      trainerList: filterTrainers,
+      trainerList: trainers,
     });
   } catch (error) {
     let errorObj = {

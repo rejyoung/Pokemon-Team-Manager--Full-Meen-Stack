@@ -83,8 +83,7 @@ async function renderAllTrainersPage(req, res) {
 
 async function renderPokedexPage(req, res) {
   try {
-    let results = await Pokemon.find({});
-    results = results.sort((a, b) => a.PokedexID - b.PokedexID);
+    let results = await Pokemon.find({}).sort("PokedexID").exec();
 
     res.render("pokedex", {
       pokedex: results,
@@ -225,8 +224,7 @@ function renderCreateProfileForm(req, res) {
 
 async function renderCapturePokemon(req, res) {
   try {
-    let results = await Pokemon.find({});
-    results = results.sort((a, b) => a.PokedexID - b.PokedexID);
+    let results = await Pokemon.find({}).sort("PokedexID").exec();
 
     res.render("capturePokemon", {
       pokedex: results,

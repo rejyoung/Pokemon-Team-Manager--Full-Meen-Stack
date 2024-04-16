@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       // Show pokemon inspector
       gsap
-        .timeline({ delay: 0.3 })
+        .timeline({ delay: 0.2 })
         .set(pokemonInspector, { display: "block" })
         .to(pokemonInspector, { duration: 0.2, opacity: 1 });
     });

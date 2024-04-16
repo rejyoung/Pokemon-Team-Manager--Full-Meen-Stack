@@ -7,9 +7,10 @@ const connectToMongoDB = require("./db/mongodb");
 const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
+// const MongoStore = require("connect-mongo");
+const RedisStore = require("connect-redis").default;
+const redisClient = require("./db/redis");
 const cookieParser = require("cookie-parser");
-
 /*
     MIDDLEWARE
 */
@@ -24,14 +25,13 @@ app.use(cookieParser());
 /*
     LOGIN MIDDLEWARE
 */
+let redisStore = new RedisStore({ client: redisClient, prefix: "pokemonTM:" });
 app.use(
   session({
+    store: redisStore,
     secret: process.env.SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI,
-    }),
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, //24 hours
     },
