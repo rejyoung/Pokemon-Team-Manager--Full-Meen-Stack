@@ -31,12 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
   ///// POKEMON INSPECTOR /////
   /////////////////////////////
 
-  closeInspect.addEventListener("click", () =>
+  closeInspect.addEventListener("click", () => {
     gsap
       .timeline()
       .to(pokemonInspector, { duration: 0.2, opacity: 0 })
-      .set(pokemonInspector, { display: "none" })
-  );
+      .set(pokemonInspector, { display: "none" });
+    setTimeout(() => {
+      speciesInfo.innerHTML = "";
+    }, 201);
+  });
 
   infoBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -90,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       // Show pokemon inspector
       gsap
-        .timeline({ delay: 0.1 })
+        .timeline({ delay: 0.2 })
         .set(pokemonInspector, { display: "block" })
         .to(pokemonInspector, { duration: 0.2, opacity: 1 });
     });
