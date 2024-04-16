@@ -1,0 +1,27 @@
+{
+  "name": "pokemon-team-manager--full-meen-stack",
+  "version": "1.0.0",
+  "description": "PROFILE PICS: Multer, the middleware used in the `app.post` route for handling file uploads, does not automatically delete files from the temporary storage directory (`uploads/` in your setup). If you want to delete the file after you've processed it (e.g., after sending it to your image server API), you need to include code to do so manually. This can help manage disk space and ensure sensitive data isn't unintentionally retained.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.40.1",
+    "axios": "^1.6.8",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.3.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0",
+    "uuid": "^9.0.1"
+  }
+}

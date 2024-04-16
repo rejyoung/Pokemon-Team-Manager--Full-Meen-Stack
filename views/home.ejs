@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head") %>
+  <body>
+    <%- include("./partials/header")%>
+    <main class="home-main">
+      <img src="/img/team-manager.svg" />
+      <p class="site-description">
+        Explore the Pokédex, create your trainer profile, and manage your
+        Pokémon team!
+      </p>
+      <%if(!isLoggedIn) {%>
+      <div class="home-buttons">
+        <a href="/login">Log In</a>
+        <p>- or -</p>
+        <a href="/createTrainer">Create a New Trainer Profile</a>
+      </div>
+      <%}%>
+    </main>
+    <%- include("./partials/footer")%>
+  </body>
+</html>

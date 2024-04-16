@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head") %>
+  <body>
+    <%- include("./partials/header") %>
+
+    <main>
+      <div class="page-contents">
+        <div class="profile-container">
+          <%if(isOwnProfile) {%>
+          <div
+            class="profile"
+            id="<%=trainer.Username%>"
+            data-token="<%=token%>"
+          >
+            <%} else {%>
+            <div class="profile" id="<%=trainer.Username%>">
+              <%}%>
+              <img class="profile-pic" src="<%=trainer.ProfilePicPath%>" />
+              <div class="name-and-region">
+                <p class="profile-name-label">Name</p>
+                <h3 class="trainer-name"><%=trainer.DisplayName%></h3>
+                <p class="profile-region-label">Region</p>
+                <h4 class="trainer-region"><%=trainer.Region%></h4>
+              </div>
+              <div class="trainer-team">
+                <%if(isOwnProfile) {%>
+                <h3>Current Team</h3>
+                <div class="current-team">
+                  <%} else {%>
+                  <h3>Pokémon Collection</h3>
+                  <div class="pokemon-collection">
+                    <%}%> <%if(collection) {%>
+                    <!-- prettier-ignore -->
+                    <% collection.forEach((pokemon) => { %>
+                    <div class="pokemon-thumb" id="<%=pokemon._id%>">
+                      <img class="pokemon-image" src="<%=pokemon.ImgURL%>" />
+                      <div class="nickname">
+                        <h4 id="nickname<%=pokemon._id%>">
+                          <%=pokemon.Nickname%>
+                        </h4>
+                        <%if(isOwnProfile) {%>
+                        <input
+                          tabindex="0"
+                          type="text"
+                          id="edit-<%=pokemon._id %>"
+                          data-pokemon-id="<%=pokemon._id%>"
+                          class="edit-box"
+                          value="<%=pokemon.Nickname%>"
+                        />
+                        <img
+                          class="edit-name"
+                          data-input-box-id="edit-<%=pokemon._id%>"
+                          src="/img/edit.svg"
+                        />
+                        <%}%>
+                      </div>
+                      <h5>Level <%= pokemon.Level %></h5>
+                      <img
+                        src="/img/info-blue.svg"
+                        class="info-btn"
+                        data-pokemon-id="<%=pokemon._id%>"
+                        data-species-id="<%=pokemon.SpeciesID%>"
+                      />
+                    </div>
+                    <% }) %> <%}%>
+                  </div>
+                </div>
+                <div class="manage-btns">
+                  <%if(isOwnProfile) {%>
+                  <button id="manage-profile">Manage Profile</button>
+                  <button id="manage-team">Manage Pokémon Collection</button>
+                  <%}%>
+                </div>
+              </div>
+            </div>
+            <%if(isOwnProfile) {%>
+            <div class="manage-account-frame">
+              <div class="manage-account-window">
+                <img src="/img/close.svg" id="close-manage" />
+                <div class="manage-options">
+                  <button id="change-display-name">Change Display Name</button>
+                  <button id="change-password">Change Password</button>
+                  <button id="delete-trainer">Delete Trainer Profile</button>
+                </div>
+                <div class="change-display-name-form">
+                  <h3 class="manage message" id="change-name-message"></h3>
+                  <button id="name-back-to-options">< Back</button>
+                  <div class="change-display-name">
+                    <label for="newName">New Trainer Name</label>
+                    <input
+                      type="text"
+                      id="newName"
+                      name="displayName"
+                      placeholder="<%=trainer.DisplayName%>"
+                      required
+                    />
+                  </div>
+                  <div class="change-display-name">
+                    <label for="change-name-password">Password</label>
+                    <input
+                      type="password"
+                      id="change-name-password"
+                      name="password"
+                      required
+                    />
+                  </div>
+                  <button id="name-save">Save</button>
+                </div>
+                <div class="change-password-form">
+                  <h3 class="manage message" id="change-password-message">
+                    Incorrect Old Password. Please Try Again.
+                  </h3>
+                  <button id="password-back-to-options">< Back</button>
+                  <div class="change-password">
+                    <label for="oldPassword">Old Password</label>
+                    <input
+                      type="password"
+                      id="oldPassword"
+                      name="oldPassword"
+                      required
+                    />
+                  </div>
+                  <div class="change-password">
+                    <label for="newPassword">New Password</label>
+                    <input
+                      type="text"
+                      id="newPassword"
+                      name="newPassword"
+                      required
+                    />
+                    <p>
+                      Password must be at least 8 characters and contain one
+                      numeral and one symbol.
+                    </p>
+                  </div>
+                  <div class="change-password">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input
+                      type="text"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      required
+                    />
+                  </div>
+                  <button id="password-save">Save</button>
+                </div>
+              </div>
+            </div>
+            <div class="delete-confirm">
+              <p class="confirm-text">
+                Are you sure you want to delete <%=trainer.DisplayName%>'s
+                profile?
+              </p>
+              <div class="yes-no-btns">
+                <button id="yes">Yes</button>
+                <button id="no">No</button>
+              </div>
+            </div>
+            <%}%>
+          </div>
+        </div>
+        <div class="pokemon-inspector">
+          <img src="/img/close.svg" id="close-inspector" />
+          <div class="pokemon-inspector-content">
+            <div class="pokemon-inspector-details"></div>
+            <div class="species-info"></div>
+          </div>
+          <button id="species-info-btn">Species Info >></button>
+        </div>
+      </div>
+    </main>
+    <%- include("./partials/footer")%>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="/js/trainerProfileGeneral.js"></script>
+    <%if(isOwnProfile) {%>
+    <script src="/js/trainerOwnProfile.js"></script>
+    <%}%>
+  </body>
+</html>

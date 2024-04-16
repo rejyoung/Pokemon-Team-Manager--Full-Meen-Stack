@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="700.4" height="396.6" version="1.1" viewBox="0 0 700.4 396.6">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20, .cls-21, .cls-22, .cls-23, .cls-24, .cls-25, .cls-26, .cls-27, .cls-28, .cls-29 {
+        isolation: isolate;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-5, .cls-12, .cls-13, .cls-16, .cls-17, .cls-20, .cls-21, .cls-22, .cls-25, .cls-26, .cls-27 {
+        font-family: PokemonSolidNormal, 'Pokemon Solid';
+      }
+
+      .cls-1, .cls-5, .cls-13, .cls-17, .cls-21, .cls-26, .cls-27 {
+        fill: #fccf00;
+      }
+
+      .cls-1, .cls-8 {
+        font-size: 232.2px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-9, .cls-11, .cls-12, .cls-14, .cls-16, .cls-19, .cls-20, .cls-22, .cls-23, .cls-25, .cls-28 {
+        font-size: 76.8px;
+      }
+
+      .cls-2, .cls-3, .cls-12, .cls-16, .cls-20, .cls-22, .cls-25 {
+        fill: #c00;
+      }
+
+      .cls-2, .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3, .cls-28 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-14, .cls-15, .cls-18, .cls-19, .cls-23, .cls-28, .cls-29 {
+        fill: #2468b1;
+        font-family: PokemonHollowNormal, 'Pokemon Hollow';
+      }
+
+      .cls-5, .cls-6 {
+        font-size: 195.3px;
+      }
+
+      .cls-7, .cls-26 {
+        font-size: 168.8px;
+      }
+
+      .cls-9, .cls-22 {
+        letter-spacing: -.3em;
+      }
+
+      .cls-10, .cls-13 {
+        font-size: 153.2px;
+      }
+
+      .cls-11, .cls-25 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12, .cls-23 {
+        letter-spacing: 0em;
+      }
+
+      .cls-14, .cls-20 {
+        letter-spacing: 0em;
+      }
+
+      .cls-15, .cls-27 {
+        font-size: 195.4px;
+      }
+
+      .cls-16, .cls-19 {
+        letter-spacing: 0em;
+      }
+
+      .cls-17, .cls-29 {
+        font-size: 164.2px;
+      }
+
+      .cls-18, .cls-21 {
+        font-size: 169.1px;
+      }
+    </style>
+  </defs>
+  <g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-1" transform="translate(31.9 307.5) rotate(-5.5) scale(1.1 1)"><tspan x="0" y="0">P</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-8" transform="translate(31.9 307.5) rotate(-5.5) scale(1.1 1)"><tspan x="0" y="0">P</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-13" transform="translate(212.2 237.5) rotate(-1.5) scale(1.4 1)"><tspan x="0" y="0">K</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-10" transform="translate(212.2 237.5) rotate(-1.5) scale(1.4 1)"><tspan x="0" y="0">K</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-21" transform="translate(143.6 267) rotate(-12) scale(1.1 1)"><tspan x="0" y="0">o</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-18" transform="translate(143.6 267) rotate(-12) scale(1.1 1)"><tspan x="0" y="0">o</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-27" transform="translate(382.7 234.8) rotate(6.4) scale(1 1)"><tspan x="0" y="0">M</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-15" transform="translate(382.7 234.8) rotate(6.4) scale(1 1)"><tspan x="0" y="0">M</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-5" transform="translate(300.8 210.9) scale(1 1)"><tspan x="0" y="0">é</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-6" transform="translate(300.8 210.9) scale(1 1)"><tspan x="0" y="0">é</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-17" transform="translate(543.6 252.5) rotate(11.3) scale(1.3 1)"><tspan x="0" y="0">N</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-29" transform="translate(543.6 252.5) rotate(11.3) scale(1.3 1)"><tspan x="0" y="0">N</tspan></text>
+      </g>
+    </g>
+    <g>
+      <g class="cls-24">
+        <text class="cls-26" transform="translate(497.8 245.9) rotate(-2.8) scale(1.1 1)"><tspan x="0" y="0">o</tspan></text>
+      </g>
+      <g class="cls-24">
+        <text class="cls-7" transform="translate(497.9 246.7) rotate(-2.8) scale(1.1 1)"><tspan x="0" y="0">o</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g>
+    <g class="cls-24">
+      <text class="cls-12" transform="translate(125.9 330.9)"><tspan x="0" y="0">T</tspan></text>
+      <text class="cls-20" transform="translate(162.7 330.9)"><tspan x="0" y="0">e</tspan></text>
+      <text class="cls-3" transform="translate(203.4 330.9)"><tspan x="0" y="0">a</tspan></text>
+      <text class="cls-25" transform="translate(245.3 330.9)"><tspan x="0" y="0">m</tspan></text>
+      <text class="cls-22" transform="translate(311.7 330.9)"><tspan x="0" y="0"> </tspan></text>
+      <text class="cls-16" transform="translate(324.4 330.9)"><tspan x="0" y="0">M</tspan></text>
+      <text class="cls-3" transform="translate(379.5 330.9)"><tspan x="0" y="0">a</tspan></text>
+      <text class="cls-2" transform="translate(421.3 330.9)"><tspan x="0" y="0">n</tspan></text>
+      <text class="cls-3" transform="translate(470.9 330.9)"><tspan x="0" y="0">a</tspan></text>
+      <text class="cls-20" transform="translate(513.3 330.9)"><tspan x="0" y="0">g</tspan></text>
+      <text class="cls-2" transform="translate(554.4 330.9)"><tspan x="0" y="0">e</tspan></text>
+      <text class="cls-16" transform="translate(595.8 330.9)"><tspan x="0" y="0">r</tspan></text>
+    </g>
+    <g class="cls-24">
+      <text class="cls-23" transform="translate(125.9 330.9)"><tspan x="0" y="0">T</tspan></text>
+      <text class="cls-14" transform="translate(162.7 330.9)"><tspan x="0" y="0">e</tspan></text>
+      <text class="cls-28" transform="translate(203.4 330.9)"><tspan x="0" y="0">a</tspan></text>
+      <text class="cls-11" transform="translate(245.3 330.9)"><tspan x="0" y="0">m</tspan></text>
+      <text class="cls-9" transform="translate(311.7 330.9)"><tspan x="0" y="0"> </tspan></text>
+      <text class="cls-19" transform="translate(324.4 330.9)"><tspan x="0" y="0">M</tspan></text>
+      <text class="cls-28" transform="translate(379.5 330.9)"><tspan x="0" y="0">a</tspan></text>
+      <text class="cls-4" transform="translate(421.3 330.9)"><tspan x="0" y="0">n</tspan></text>
+      <text class="cls-28" transform="translate(470.9 330.9)"><tspan x="0" y="0">a</tspan></text>
+      <text class="cls-14" transform="translate(513.3 330.9)"><tspan x="0" y="0">g</tspan></text>
+      <text class="cls-4" transform="translate(554.4 330.9)"><tspan x="0" y="0">e</tspan></text>
+      <text class="cls-19" transform="translate(595.8 330.9)"><tspan x="0" y="0">r</tspan></text>
+    </g>
+  </g>
+</svg>

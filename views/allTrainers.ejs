@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head") %>
+  <body>
+    <%- include("./partials/header") %>
+
+    <main>
+      <h1>Active Trainers</h1>
+
+      <div class="all-trainers">
+        <% trainers.forEach((trainer) => { %>
+        <div class="trainer-div <%=trainer.Region%>" id="<%=trainer.Username%>">
+          <img src="<%=trainer.ProfilePicPath%>" />
+          <!-- prettier-ignore -->
+          <% let trainerName = trainer.DisplayName[0].toUpperCase() + trainer.DisplayName.slice(1)%>
+          <div class="trainer-text">
+            <h3><%=trainerName%></h3>
+            <h4><%=trainer.Region%></h4>
+            <!-- <h5>Pokemon in Collection</h5> -->
+            <p>
+              <b><%=trainer.PokemonCollection.length%></b> Pokémon in collection
+            </p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </main>
+    <%- include("./partials/footer")%>
+    <script src="/js/allTrainers.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head") %>
+<body>
+    <%- include("./partials/header") %>
+    
+    <main>
+        <h1><%=trainerName%>'s Pokémon Collection</h1>
+        
+        <div class="sub-menu">
+            <div class="collection-buttons">
+                <button id="back-to-profile">< Back to Trainer Profile</button>
+                <button id="capture">Capture Pokémon</button>
+            </div>
+            <div class="search-box">
+                <label for="search-input">Search</label>
+                <input type="text" id="search-input" placeholder="pokémon name">
+            </div>
+        </div>
+        <h2 class="no-results" style="display: none">Oops! We couldn't find any matching Pokémon. Maybe try searching for something else?</h2>
+        <% if (collection.length == 0) { %>
+            <h2 class="collection-empty">This trainer doesn't have any pokémon yet! Time to grab some pokéballs and head out into the field!</h2>
+        <%}%>
+        <div class="collection" id="<%=trainerToken%>" data-username="<%=username%>">
+        <% collection.forEach((pokemon) => { %>
+            <div class="pokemon" id="<%=pokemon._id%>" data-name="<%=pokemon.Nickname%>">
+            <%if(pokemon.CanEvolve) {%>
+                <div class="collection-pokemon can-evolve" data-name="<%=pokemon.Nickname%>">
+            <%} else {%>
+                <div class="collection-pokemon" data-name="<%=pokemon.Nickname%>">
+            <%}%>
+                    <img src=<%=pokemon.ImgURL%> class="collection-pokemon-image" id="<%=pokemon._id%>-img">
+                    <div class="collection-label">
+                        <div class="collection-nickname">
+                            <h3 id="nickname<%=pokemon._id%>"><%=pokemon.Nickname%></h3>
+                            <input tabindex="0" type="text" id="edit-<%=pokemon._id %>" data-pokemon-id="<%=pokemon._id%>" class="collection-edit-box" value="<%=pokemon.Nickname%>">
+                            <img class="collection-edit-name" data-input-box-id="edit-<%=pokemon._id%>" src="/img/edit-white.svg"></object>
+                        </div>
+                        <h4>Level <%=pokemon.Level%></h4>
+                    </div>
+                    <div class="side-buttons">
+                        <%if(pokemon.CurrentTeam) {%>
+                            <img class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: none">
+                            <img class="remove-from-team" data-pokemon-id="<%=pokemon._id%>" src="/img/minus.svg" style="display: inline-block">
+                        <%} else {%>
+                            <img class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: inline-block">
+                            <img class="remove-from-team" data-pokemon-id="<%=pokemon._id%>" src="/img/minus.svg" style="display: none">
+                        <%}%>
+                        <img src="/img/level-up-arrow.svg" class="collection-level-up" data-pokemon-id="<%=pokemon._id%>">
+                        <%if(pokemon.CanEvolve) {%>
+                            <img src="/img/evolve.svg" class="evolve" data-pokemon-id="<%=pokemon._id%>"> 
+                        <%} else {%>
+                            <img src="/img/evolve.svg" class="evolve disabled" data-pokemon-id="<%=pokemon._id%>">
+                        <%}%>
+                        <img src="/img/info.svg" class="info-btn" data-pokemon-id="<%=pokemon._id%>" data-species-id="<%=pokemon.SpeciesID%>">
+                        <button class="release" data-pokemon-id="<%=pokemon._id%>">Release Pokemon</button>
+                    </div>
+                </div>
+                
+            </div>
+        <% }) %>
+        </div>
+        <div class="pokemon-inspector">
+            <img src="/img/close.svg" id="close-inspector">
+            <div class="pokemon-inspector-content">
+                <div class="pokemon-inspector-details"></div>
+                <div class="species-info"></div>
+            </div>
+            <button id="species-info-btn">Species Info >></button>
+        </div>
+        <div class="evolution-popup" tabindex="0">
+            <h2>Choose Your Evolution</h2>
+            <div class="evolution-options"></div>
+        </div>
+    </main>
+    <%- include("./partials/footer")%>
+    <script src="/js/collectionSearch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="/js/trainerCollection.js"></script>
+</body>
+</html>
