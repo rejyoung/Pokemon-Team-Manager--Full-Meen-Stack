@@ -56,7 +56,7 @@ app.use("/api/pokemon", pokemonRouter);
 /*
     APP LISTENING
 */
-const PORT = 8080;
+const PORT = 10000;
 
 app.listen(PORT, () => {
   console.log(`server is on port ${PORT}`);
