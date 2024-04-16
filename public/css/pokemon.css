@@ -505,9 +505,9 @@ nav div p {
 
 .all-trainers {
   width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  /* flex-wrap: wrap;
+  justify-content: space-between; */
   background-color: var(--pokemon-blue);
   overflow-y: scroll;
   padding: 30px;
@@ -1057,6 +1057,7 @@ nav div p {
 
 .poke-info {
   padding: 30px;
+  width: 200px;
 }
 
 .types {
@@ -1076,11 +1077,13 @@ nav div p {
 .moves {
   background-color: lightgray;
   padding: 10px;
-  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
   display: grid;
+  width: 200px;
   grid-template-columns: 1fr 1fr;
   column-gap: 5px;
-  grid-template-rows: 1.5rem;
+  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
   overflow-y: scroll;
 }
 
@@ -1128,11 +1131,12 @@ nav div p {
 .owners-box {
   background-color: lightgray;
   padding: 10px;
-  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 10px;
-  grid-template-rows: 1.5rem;
+  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
   overflow-y: scroll;
 }
 
@@ -1220,11 +1224,12 @@ nav div p {
 .capture-owners-box {
   background-color: lightgray;
   padding: 10px;
-  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 10px;
-  grid-template-rows: 1.5rem;
+  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
   overflow-y: scroll;
 }
 
@@ -1243,6 +1248,10 @@ nav div p {
 
 .poke-info {
   flex-grow: 1;
+}
+
+.poke-info > p:not(.type) {
+  margin-top: 0;
 }
 
 .poke-info > p {
@@ -1285,6 +1294,14 @@ nav div p {
 }
 
 .species-owners {
+  background-color: lightgray;
+  padding: 10px;
+  min-height: 100px;
+  max-height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
   overflow-y: scroll;
 }
 /*****************/
