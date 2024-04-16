@@ -45,8 +45,10 @@ function apiParse(newPokeObj, data, evolveData) {
     let minLev = 1;
     let finMinLev = 1;
     nextLevel.forEach((firstEvolution) => {
-      //conditionals to handle api response inconsistency re: minimum levels for evolution
-      if (firstEvolution["evolution_details"][0]["min_level"]) {
+      if (
+        firstEvolution["evolution_details"][0] &&
+        firstEvolution["evolution_details"][0]["min_level"]
+      ) {
         if (
           typeof firstEvolution != "undefined" &&
           typeof firstEvolution["evolution_details"] != "undefined" &&

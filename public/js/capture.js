@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
   backBtn.addEventListener(
     "click",
     () =>
-      (window.location.href = `/trainer/${backBtn.dataset.trainerId}/pokemonCollection`)
+      (window.location.href = `/trainer/profile/pokemonCollection?token=${backBtn.dataset.trainerToken}`)
   );
 
   const pokedex = document.querySelector(".pokedex");

@@ -192,11 +192,12 @@ async function renderOtherProfile(req, res) {
 async function renderOnePokemon(req, res) {
   try {
     let pokemonResult = await Pokemon.findOne({ _id: req.params.id });
-
+    console.log(pokemonResult.TeamsOn);
     let trainerListPromises = pokemonResult.TeamsOn.map((id) =>
       Trainer.findOne({ _id: id })
     );
     let trainerList = await Promise.all(trainerListPromises);
+    console.log(trainerList);
     res.render("singlePokemon", {
       pokemon: pokemonResult,
       trainers: trainerList,

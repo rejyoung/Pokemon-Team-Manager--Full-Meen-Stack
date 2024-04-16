@@ -167,6 +167,8 @@ nav div p {
 
 .home-main img {
   margin-left: -40px;
+  width: 700px;
+  height: auto;
 }
 
 .site-description {
@@ -965,6 +967,8 @@ nav div p {
   padding: 5px;
   z-index: 1;
   display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
   background-color: var(--pokemon-blue);
 }
 .add-to-team,
@@ -972,7 +976,7 @@ nav div p {
 .info-btn,
 .collection-level-up,
 .evolve {
-  width: 25px;
+  width: 20px;
   height: auto;
   margin-right: 5px;
   z-index: 1;

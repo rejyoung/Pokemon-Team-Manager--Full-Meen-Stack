@@ -53,7 +53,7 @@ async function addPokemon(req, res) {
   try {
     let entry = req.body;
     let pokedexNum = req.body.PokedexID;
-
+    console.log(pokedexNum);
     // Fetch data from pokemon api
     let apiResp = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${pokedexNum}`
