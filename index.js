@@ -58,8 +58,8 @@ app.use("/api/pokemon", pokemonRouter);
 */
 const PORT = 10000;
 
-app.listen(PORT, () => {
-  console.log(`server is on port ${PORT}`);
-
-  connectToMongoDB();
+connectToMongoDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`server is on port ${PORT}`);
+  });
 });
