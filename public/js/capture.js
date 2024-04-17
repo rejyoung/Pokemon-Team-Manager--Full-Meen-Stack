@@ -59,15 +59,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 species.Name.slice(5)
               : species.Name[0].toUpperCase() + species.Name.slice(1);
             //extract pokemon types
-            let types = "";
-            species.Type.forEach((type) => {
-              types += `<p class="type ${type}">${type}</p>\n`;
-            });
+            let types = species.Type.map((type) => {
+              return `<p class="type ${type}">${type}</p>`;
+            }).join("\n");
 
-            let trainers = "";
-            trainerList.forEach((trainer) => {
-              trainers += `<a href="/trainer/${trainer.Username}">${trainer.DisplayName}</a>\n`;
-            });
+            let trainers = trainerList
+              .map((trainer) => {
+                return `<a href="/trainer/${trainer.Username}">${trainer.DisplayName}</a>`;
+              })
+              .join("\n");
             // prettier-ignore
             speciesInfo.innerHTML = `
                 <div class="capture-name-and-pic">

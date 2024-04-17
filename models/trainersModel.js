@@ -59,6 +59,11 @@ const ownedPokemonSchema = new mongoose.Schema({
   ImgURL: {
     type: String,
   },
+  MinimumLevel: {
+    type: String,
+    required: true,
+    default: 1,
+  },
 });
 
 const trainerSchema = new mongoose.Schema(
@@ -91,6 +96,8 @@ const trainerSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+trainerSchema.index({ Username: 1, "PokemonCollection._id": 1 });
 
 const Trainer = mongoose.model("Trainer", trainerSchema);
 

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const captureButton = document.querySelector("#capture");
   const backBtn = document.querySelector("#back-to-profile");
   const levelUps = document.querySelectorAll(".collection-level-up");
+  const levelOptions = document.querySelectorAll(".level-options-container");
   const editBtns = document.querySelectorAll(".collection-edit-name");
   const editBoxes = document.querySelectorAll(".collection-edit-box");
   const infoBtns = document.querySelectorAll(".info-btn");
@@ -95,34 +96,71 @@ document.addEventListener("DOMContentLoaded", () => {
   // Level Pokemon
   levelUps.forEach((btn) => {
     btn.addEventListener("click", () => {
+      const levelOptions = document.querySelector(
+        `#levels${btn.dataset.pokemonId}`
+      );
+      if (levelOptions.style.height === "0px") {
+        gsap.to(levelOptions, { duration: 0.2, height: "250px" });
+      } else {
+        gsap.to(levelOptions, { duration: 0.2, height: "0px" });
+      }
+    });
+  });
+
+  levelOptions.forEach((option) => {
+    option.addEventListener("click", (e) => {
+      let btn = e.target.closest(".level-option");
       axios
         .put(`/api/trainers/oneTrainer/${trainerToken}/levelPokemon`, {
           id: btn.dataset.pokemonId,
+          level: +btn.id,
         })
         .then((response) => {
           if (response.status === 200) {
-            btn.parentNode.previousElementSibling.lastElementChild.innerHTML = `Level ${response.data.level}`;
+            btn.parentNode.parentNode.previousElementSibling.lastElementChild.innerHTML = `Level ${response.data.level}`;
 
             // Update evolve button
             if (
               response.data.canEvolve &&
-              !btn.parentNode.classList.contains("can-evolve")
+              !btn.parentNode.parentNode.parentNode.classList.contains(
+                "can-evolve"
+              )
             ) {
-              btn.parentNode.parentNode.classList.add("can-evolve");
-              if (btn.nextElementSibling.classList.contains("disabled")) {
-                btn.nextElementSibling.classList.remove("disabled");
+              btn.parentNode.parentNode.parentNode.classList.add("can-evolve");
+              if (
+                btn.parentNode.parentNode.nextElementSibling.children
+                  .item(3)
+                  .classList.contains("disabled")
+              ) {
+                btn.parentNode.parentNode.nextElementSibling.children
+                  .item(3)
+                  .classList.remove("disabled");
               }
             }
             if (
               !response.data.canEvolve &&
-              btn.parentNode.classList.contains("can-evolve")
+              btn.parentNode.parentNode.parentNode.classList.contains(
+                "can-evolve"
+              )
             ) {
-              btn.parentNode.parentNode.classList.remove("can-evolve");
-              if (!btn.nextElementSibling.classList.contains("disabled")) {
-                btn.nextElementSibling.classList.add("disabled");
+              btn.parentNode.parentNode.parentNode.classList.remove(
+                "can-evolve"
+              );
+              if (
+                !btn.parentNode.parentNode.nextElementSibling.children
+                  .item(3)
+                  .classList.contains("disabled")
+              ) {
+                btn.parentNode.parentNode.nextElementSibling.children
+                  .item(3)
+                  .classList.add("disabled");
               }
             }
           }
+          gsap.to(document.querySelector(`#levels${btn.dataset.pokemonId}`), {
+            duration: 0.2,
+            height: "0px",
+          });
         })
         .catch((error) => {
           console.error("Request failed", error);
@@ -223,6 +261,17 @@ document.addEventListener("DOMContentLoaded", () => {
                             btn.classList.add("disabled");
                           }
                         }
+
+                        //Update Level Options
+                        let levelOptDiv = document.querySelector(
+                          `#levels${btn.dataset.pokemonId}`
+                        ).firstElementChild;
+                        let levelOptions = Array.from(levelOptDiv.children);
+                        levelOptions.forEach((option) => {
+                          if (+option.id < newPokemon.MinimumLevel) {
+                            option.remove();
+                          }
+                        });
 
                         // Flip pokemon "card" halfway
                         gsap.to(collectionDiv, {
@@ -369,20 +418,45 @@ document.addEventListener("DOMContentLoaded", () => {
   infoBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       // Get pokemon info and update html
-      axios
-        .get(`/api/trainers/oneTrainer/${username}/${btn.dataset.pokemonId}`)
-        .then((response) => {
-          if (response.status === 200) {
-            let pokemon = response.data.pokemon;
-            let moves = "";
-            pokemon.Moves.forEach((move) => {
-              let moveSplit = move.MoveName.split(" ");
-              let moveCapital = moveSplit.map(
-                (word) => (word = word[0].toUpperCase() + word.slice(1))
+      Promise.all([
+        axios.get(
+          `/api/trainers/oneTrainer/${username}/${btn.dataset.pokemonId}`
+        ),
+        axios.get(`/api/pokemon/${btn.dataset.speciesId}`, {
+          id: btn.dataset.pokemonId,
+        }),
+      ])
+        .then((responses) => {
+          const [trainerResponse, speciesResponse] = responses;
+          if (
+            trainerResponse.status === 200 &&
+            speciesResponse.status === 200
+          ) {
+            const pokemon = trainerResponse.data.pokemon;
+            const species = speciesResponse.data.pokemonInfo;
+            const trainerList = speciesResponse.data.trainerList;
+            let moves = pokemon.Moves.map((move) => {
+              let moveCapital = move.MoveName.split(" ").map(
+                (word) => word[0].toUpperCase() + word.slice(1)
               );
-              let moveName = moveCapital.join(" ");
-              moves += `<p>${moveName}</p>\n`;
-            });
+              return `<p>${moveCapital.join(" ")}</p>`;
+            }).join("\n");
+            let pokeName = species.Name.startsWith("mr.")
+              ? species.Name[0].toUpperCase() +
+                species.Name.slice(1, 4) +
+                species.Name[4].toUpperCase() +
+                species.Name.slice(5)
+              : species.Name[0].toUpperCase() + species.Name.slice(1);
+            //extract pokemon types
+            let types = species.Type.map((type) => {
+              return `<p class="type ${type}">${type}</p>`;
+            }).join("\n");
+            let trainers = trainerList
+              .map((trainer) => {
+                return `<a href="/trainer/${trainer.Username}">${trainer.DisplayName}</a>`;
+              })
+              .join("\n");
+
             // prettier-ignore
             pokemonInspectorContent.innerHTML = `
               <div class="name-and-pic">
@@ -392,6 +466,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h4>Level ${pokemon.Level}</h4>
               </div>
               <div class="poke-info">
+                <div class="types">
+                  ${types}
+                </div>
                 <div class="move-div">
                   <h4>Moves</h4>
                   <div class="moves">
@@ -400,48 +477,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             `;
-          }
-        })
-        .catch((error) => {
-          console.error("Request failed", error);
-        });
 
-      // Get species info and update html
-      axios
-        .get(`/api/pokemon/${btn.dataset.speciesId}`, {
-          id: btn.dataset.pokemonId,
-        })
-        .then((response) => {
-          if (response.status === 200) {
-            let species = response.data.pokemonInfo;
-            let trainerList = response.data.trainerList;
-            let pokeName = species.Name.startsWith("mr.")
-              ? species.Name[0].toUpperCase() +
-                species.Name.slice(1, 4) +
-                species.Name[4].toUpperCase() +
-                species.Name.slice(5)
-              : species.Name[0].toUpperCase() + species.Name.slice(1);
-            //extract pokemon types
-            let types = document.createElement("div");
-            types.className = "types";
-            species.Type.forEach((type) => {
-              let typeDiv = document.createElement("p");
-              typeDiv.className = "type";
-              typeDiv.classList.add(type);
-              typeDiv.innerText = type;
-              types.appendChild(typeDiv);
-            });
-            //insert types before moves
-            document
-              .querySelector(".poke-info")
-              .firstElementChild.before(types);
-
-            let trainers = "";
-            trainerList.forEach((trainer) => {
-              trainers += `<a href="/trainer/${trainer.Username}">${trainer.DisplayName}</a>\n`;
-            });
             // prettier-ignore
             speciesInfo.innerHTML = `
+              <div class="species-info-container">
                 <p class="species-label">Species</p>
                 <h3>${pokeName}</h3>
                 <p class="species-pokedex">Pokedex #${String(species.PokedexID).padStart(4, "0")}</p>
@@ -449,7 +488,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="owners-box">
                   ${trainers}
                 </div>
-               `;
+              </div>
+            `;
           }
         })
         .catch((error) => {

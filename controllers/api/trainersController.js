@@ -316,19 +316,12 @@ async function getTrainerPokemon(req, res) {
 async function getOneTrainerPokemon(req, res) {
   try {
     let objectId = new mongoose.Types.ObjectId(req.params.pokemonID);
-    console.log(objectId);
-    let results = await Trainer.aggregate([
-      { $match: { Username: req.params.username } },
-      { $unwind: "$PokemonCollection" },
-      {
-        $match: {
-          "PokemonCollection._id": objectId,
-        },
-      },
-      { $project: { pokemon: "$PokemonCollection" } },
-    ]);
+    let results = await Trainer.find(
+      { Username: req.params.username },
+      { PokemonCollection: { $elemMatch: { _id: objectId } } }
+    );
     res.status(200).json({
-      pokemon: results[0].pokemon,
+      pokemon: results[0].PokemonCollection[0],
     });
   } catch (error) {
     let errorObj = {
@@ -410,6 +403,7 @@ async function capturePokemon(req, res) {
       ImgURL: targetPokemon.ImgPath,
       NextEvolution: nextEvolutionArray,
       Moves: movesArr,
+      MinimumLevel: targetPokemon.StartingLevel,
     });
 
     // Add trainer to species array of teams
@@ -444,6 +438,7 @@ async function levelPokemon(req, res) {
     }
     let targetTrainer = await Trainer.findById(trainerId);
     const pokemonID = req.body.id;
+    const updatedLevel = req.body.level;
     let evolvePossible = false;
 
     // Find index of pokemon to be leveled
@@ -453,7 +448,8 @@ async function levelPokemon(req, res) {
     const targetPokemon = targetTrainer.PokemonCollection[pokemonIndex];
 
     // Increment level
-    targetPokemon.Level += 1;
+    console.log(updatedLevel);
+    targetPokemon.Level = updatedLevel;
 
     //Update this pokemon from species data
     let newLevel = targetPokemon.Level;
@@ -473,6 +469,9 @@ async function levelPokemon(req, res) {
       if (newLevel >= minimumLev) {
         targetTrainer.PokemonCollection[pokemonIndex].CanEvolve = true;
         evolvePossible = true;
+      } else {
+        targetTrainer.PokemonCollection[pokemonIndex].CanEvolve = false;
+        evolvePossible = false;
       }
     }
     if (
@@ -483,6 +482,9 @@ async function levelPokemon(req, res) {
       if (newLevel >= minimumLev) {
         targetPokemon.CanEvolve = true;
         evolvePossible = true;
+      } else {
+        targetPokemon.CanEvolve = false;
+        evolvePossible = false;
       }
     }
 
@@ -592,6 +594,7 @@ async function evolvePokemon(req, res) {
     targetPokemon.SpeciesID = newSpecies._id;
     targetPokemon.CanEvolve = false;
     targetPokemon.ImgURL = newSpecies.ImgPath;
+    targetPokemon.MinimumLevel = newSpecies.StartingLevel;
 
     // Update pokemon evolution data
     let speciesNextEv = newSpecies.NextEvolution;

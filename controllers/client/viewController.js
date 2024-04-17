@@ -249,8 +249,8 @@ async function renderPokemonCollection(req, res) {
     let trainerId = await validateToken(req.query.token);
     let targetTrainer = await Trainer.findOne({ _id: trainerId });
     let results = targetTrainer.PokemonCollection;
+    console.log(results);
     results = results.sort((a, b) => (a.Nickname < b.Nickname ? -1 : 1));
-    console.log(req.username);
     res.render("trainerCollection", {
       collection: results,
       trainerToken: req.query.token,

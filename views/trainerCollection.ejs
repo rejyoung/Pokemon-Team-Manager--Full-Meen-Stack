@@ -38,6 +38,15 @@
                         </div>
                         <h4>Level <%=pokemon.Level%></h4>
                     </div>
+                    <div class="level-options-container" id="levels<%=pokemon._id%>" style="height: 0px">
+                        <div class="level-options">
+                            <%for(let i = pokemon.MinimumLevel; i < 101; i++) {%>
+                                <div class="level-option" id="<%=i%>" data-pokemon-id="<%=pokemon._id%>">
+                                    <p>Level <%=i%></p>
+                                </div>
+                            <%}%>
+                        </div>
+                    </div>
                     <div class="side-buttons">
                         <%if(pokemon.CurrentTeam) {%>
                             <img class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: none">

@@ -29,22 +29,45 @@ document.addEventListener("DOMContentLoaded", () => {
   infoBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       // Get pokemon info and update html
-      axios
-        .get(
+      Promise.all([
+        axios.get(
           `/api/trainers/oneTrainer/${trainerUsername}/${btn.dataset.pokemonId}`
-        )
-        .then((response) => {
-          if (response.status === 200) {
-            let pokemon = response.data.pokemon;
-            let moves = "";
-            pokemon.Moves.forEach((move) => {
-              let moveSplit = move.MoveName.split(" ");
-              let moveCapital = moveSplit.map(
-                (word) => (word = word[0].toUpperCase() + word.slice(1))
+        ),
+        axios.get(`/api/pokemon/${btn.dataset.speciesId}`, {
+          id: btn.dataset.pokemonId,
+        }),
+      ])
+        .then((responses) => {
+          const [trainerResponse, speciesResponse] = responses;
+          if (
+            trainerResponse.status === 200 &&
+            speciesResponse.status === 200
+          ) {
+            const pokemon = trainerResponse.data.pokemon;
+            const species = speciesResponse.data.pokemonInfo;
+            const trainerList = speciesResponse.data.trainerList;
+            let moves = pokemon.Moves.map((move) => {
+              let moveCapital = move.MoveName.split(" ").map(
+                (word) => word[0].toUpperCase() + word.slice(1)
               );
-              let moveName = moveCapital.join(" ");
-              moves += `<p>${moveName}</p>\n`;
-            });
+              return `<p>${moveCapital.join(" ")}</p>`;
+            }).join("\n");
+            let pokeName = species.Name.startsWith("mr.")
+              ? species.Name[0].toUpperCase() +
+                species.Name.slice(1, 4) +
+                species.Name[4].toUpperCase() +
+                species.Name.slice(5)
+              : species.Name[0].toUpperCase() + species.Name.slice(1);
+            //extract pokemon types
+            let types = species.Type.map((type) => {
+              return `<p class="type ${type}">${type}</p>`;
+            }).join("\n");
+            let trainers = trainerList
+              .map((trainer) => {
+                return `<a href="/trainer/${trainer.Username}">${trainer.DisplayName}</a>`;
+              })
+              .join("\n");
+
             // prettier-ignore
             pokemonInspectorContent.innerHTML = `
               <div class="name-and-pic">
@@ -54,6 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h4>Level ${pokemon.Level}</h4>
               </div>
               <div class="poke-info">
+                <div class="types">
+                  ${types}
+                </div>
                 <div class="move-div">
                   <h4>Moves</h4>
                   <div class="moves">
@@ -62,43 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             `;
-            // Get species info and update html
-            return axios.get(`/api/pokemon/${btn.dataset.speciesId}`, {
-              id: btn.dataset.pokemonId,
-            });
-          }
-        })
-        .then((response) => {
-          if (response.status === 200) {
-            let species = response.data.pokemonInfo;
-            let trainerList = response.data.trainerList;
-            let pokeName = species.Name.startsWith("mr.")
-              ? species.Name[0].toUpperCase() +
-                species.Name.slice(1, 4) +
-                species.Name[4].toUpperCase() +
-                species.Name.slice(5)
-              : species.Name[0].toUpperCase() + species.Name.slice(1);
-            //extract pokemon types
-            let types = document.createElement("div");
-            types.className = "types";
-            species.Type.forEach((type) => {
-              let typeDiv = document.createElement("p");
-              typeDiv.className = "type";
-              typeDiv.classList.add(type);
-              typeDiv.innerText = type;
-              types.appendChild(typeDiv);
-            });
-            //insert types before moves
-            document
-              .querySelector(".poke-info")
-              .firstElementChild.before(types);
 
-            let trainers = "";
-            trainerList.forEach((trainer) => {
-              trainers += `<a href="/trainer/${trainer.Username}">${trainer.DisplayName}</a>\n`;
-            });
             // prettier-ignore
             speciesInfo.innerHTML = `
+              <div class="species-info-container">
                 <p class="species-label">Species</p>
                 <h3>${pokeName}</h3>
                 <p class="species-pokedex">Pokedex #${String(species.PokedexID).padStart(4, "0")}</p>
@@ -106,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="owners-box">
                   ${trainers}
                 </div>
-               `;
+              </div>
+            `;
           }
         })
         .catch((error) => {
@@ -114,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       // Show pokemon inspector
       gsap
-        .timeline({ delay: 0.3 })
+        .timeline({ delay: 0.2 })
         .set(pokemonInspector, { display: "block" })
         .to(pokemonInspector, { duration: 0.2, opacity: 1 });
     });
