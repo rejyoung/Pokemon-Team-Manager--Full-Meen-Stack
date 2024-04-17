@@ -31,7 +31,7 @@ app.use(
     store: redisStore,
     secret: process.env.SESSION_SECRET_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, //24 hours
     },
