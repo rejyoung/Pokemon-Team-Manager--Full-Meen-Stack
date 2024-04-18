@@ -7,7 +7,6 @@ const connectToMongoDB = require("./db/mongodb");
 const logger = require("morgan");
 const path = require("path");
 const session = require("express-session");
-// const MongoStore = require("connect-mongo");
 const RedisStore = require("connect-redis").default;
 const redisClient = require("./db/redis");
 const cookieParser = require("cookie-parser");
