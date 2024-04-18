@@ -33,7 +33,7 @@ function apiParse(newPokeObj, data, evolveData) {
 
   // Make evolution tree
   let startLev = 1;
-  let evLev = 0;
+  let evLev = 1;
   let baseForm = evolveData.species.name;
 
   let firstEvolutions = [];
@@ -45,18 +45,17 @@ function apiParse(newPokeObj, data, evolveData) {
     let minLev = 1;
     let finMinLev = 1;
     nextLevel.forEach((firstEvolution) => {
-      if (
-        firstEvolution["evolution_details"][0] &&
-        firstEvolution["evolution_details"][0]["min_level"]
-      ) {
+      if (firstEvolution["evolution_details"][0]) {
         if (
           typeof firstEvolution != "undefined" &&
           typeof firstEvolution["evolution_details"] != "undefined" &&
-          typeof firstEvolution["evolution_details"][0] != "undefined" &&
-          typeof firstEvolution["evolution_details"][0]["min_level"] !=
-            "undefined"
+          typeof firstEvolution["evolution_details"][0] != "undefined"
         ) {
-          if (firstEvolution["evolution_details"][0]["min_level"]) {
+          if (
+            firstEvolution["evolution_details"][0]["min_level"] &&
+            typeof firstEvolution["evolution_details"][0]["min_level"] !=
+              "undefined"
+          ) {
             minLev = firstEvolution["evolution_details"][0]["min_level"];
           } else {
             minLev = 1;
@@ -84,15 +83,17 @@ function apiParse(newPokeObj, data, evolveData) {
           let finalLevel = firstEvolution["evolves_to"];
           finalLevel.forEach((finalEvolution) => {
             //conditionals to handle api response inconsistency re: minimum levels for evolution
-            if (finalEvolution["evolution_details"][0]["min_level"]) {
+            if (finalEvolution["evolution_details"][0]) {
               if (
                 typeof finalEvolution != "undefined" &&
                 typeof finalEvolution["evolution_details"] != "undefined" &&
-                typeof finalEvolution["evolution_details"][0] != "undefined" &&
-                typeof finalEvolution["evolution_details"][0]["min_level"] !=
-                  "undefined"
+                typeof finalEvolution["evolution_details"][0] != "undefined"
               ) {
-                if (firstEvolution["evolution_details"][0]["min_level"]) {
+                if (
+                  finalEvolution["evolution_details"][0]["min_level"] &&
+                  typeof finalEvolution["evolution_details"][0]["min_level"] !=
+                    "undefined"
+                ) {
                   finMinLev =
                     finalEvolution["evolution_details"][0]["min_level"];
                 } else {

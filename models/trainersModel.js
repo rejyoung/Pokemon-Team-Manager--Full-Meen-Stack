@@ -20,7 +20,7 @@ const moveSchema = new mongoose.Schema(
 const ownedPokemonSchema = new mongoose.Schema({
   SpeciesID: {
     type: ObjectID,
-    ref: "pokemons",
+    ref: "Pokemon",
     required: true,
   },
   Level: {
@@ -47,7 +47,7 @@ const ownedPokemonSchema = new mongoose.Schema({
     type: [
       {
         type: ObjectID,
-        ref: "pokemons",
+        ref: "Pokemon",
       },
     ],
   },

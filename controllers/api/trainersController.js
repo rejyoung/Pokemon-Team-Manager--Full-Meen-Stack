@@ -460,6 +460,8 @@ async function levelPokemon(req, res) {
     let moves = targetSpecies.Moves.filter((move) => move.Level <= newLevel);
     moves.forEach((move) => targetPokemon.Moves.addToSet(move));
 
+    console.log(targetSpecies.EvolutionLevel);
+    console.log(targetSpecies.EvolutionTree.firstEvolution.length);
     // set CanEvolve status
     if (
       targetSpecies.EvolutionLevel == 0 &&

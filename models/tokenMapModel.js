@@ -9,7 +9,7 @@ const tokenMapSchema = mongoose.Schema({
   databaseId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "trainers",
+    ref: "Trainer",
   },
   expireAt: {
     type: Date,

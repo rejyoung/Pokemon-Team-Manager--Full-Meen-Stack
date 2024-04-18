@@ -191,12 +191,10 @@ async function renderOtherProfile(req, res) {
 async function renderOnePokemon(req, res) {
   try {
     let pokemonResult = await Pokemon.findOne({ _id: req.params.id });
-    console.log(pokemonResult.TeamsOn);
     let trainerListPromises = pokemonResult.TeamsOn.map((id) =>
       Trainer.findOne({ _id: id })
     );
     let trainerList = await Promise.all(trainerListPromises);
-    console.log(trainerList);
     res.render("singlePokemon", {
       pokemon: pokemonResult,
       trainers: trainerList,
@@ -249,7 +247,6 @@ async function renderPokemonCollection(req, res) {
     let trainerId = await validateToken(req.query.token);
     let targetTrainer = await Trainer.findOne({ _id: trainerId });
     let results = targetTrainer.PokemonCollection;
-    console.log(results);
     results = results.sort((a, b) => (a.Nickname < b.Nickname ? -1 : 1));
     res.render("trainerCollection", {
       collection: results,
