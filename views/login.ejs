@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("./partials/head") %>
+  <head>
+    <%- include("./partials/head") %>
+    <link
+      rel="stylesheet"
+      href="/css/mobile/M-login.css"
+      media="screen and (max-width: 699px)"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/desktop/DT-login.css"
+      media="screen and (min-width: 700px)"
+    />
+  </head>
   <body>
     <%- include("./partials/header") %>
 
@@ -26,7 +38,7 @@
           required
         />
       </div>
-      <input type="submit" value="Log In" />
+      <input type="submit" value="Log In" aria-label="Log in" />
     </form>
     <%- include("./partials/footer")%>
   </body>

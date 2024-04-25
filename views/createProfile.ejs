@@ -1,78 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("./partials/head") %>
+  <head>
+    <%- include("./partials/head") %>
+    <link
+      rel="stylesheet"
+      href="/css/mobile/M-create-profile.css"
+      media="screen and (max-width: 699px)"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/desktop/DT-create-profile.css"
+      media="screen and (min-width: 700px)"
+    />
+  </head>
   <body>
     <%- include("./partials/header") %>
 
     <h1 class="create-header">Create a Trainer</h1>
     <form class="create-form">
-      <div class="choose-names">
-        <div class="choose-username">
-          <label for="username">Choose a username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="username"
-            required
-          />
-          <p class="username-message">The username must be unique.</p>
-        </div>
-        <div class="choose-display-name">
-          <label for="trainerName">Choose a trainer name</label>
-          <input
-            type="text"
-            id="trainerName"
-            name="displayName"
-            placeholder="name"
-          />
-          <p>
-            This is what you want people to call you. It can be anything you
-            want.
-          </p>
+      <div class="image-upload-panel">
+        <div class="drop-area" id="drop-area">
+          Drag and drop your image here or click to select an image.
+          <input type="file" id="fileElem" accept="image/*" />
+          <div id="preview"></div>
         </div>
       </div>
-      <div class="set-password">
-        <div class="choose-password">
-          <label for="createPassword">Choose a password</label>
-          <input
-            type="text"
-            id="createPassword"
-            name="password"
-            placeholder="password"
-            required
-          />
-          <p>
-            Password must be at least 8 characters and contain one numeral and
-            one symbol.
-          </p>
+      <div class="create-form-info">
+        <div class="choose-names">
+          <div class="choose-username">
+            <label for="username">Choose a username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="username"
+              required
+            />
+            <p class="username-message">The username must be unique.</p>
+          </div>
+          <div class="choose-display-name">
+            <label for="trainerName">Choose a trainer name</label>
+            <input
+              type="text"
+              id="trainerName"
+              name="displayName"
+              placeholder="name"
+            />
+            <p>
+              This is what you want people to call you. It can be anything you
+              want.
+            </p>
+          </div>
         </div>
-        <div class="choose-password">
-          <label for="createConfirmPassword">Confirm password</label>
-          <input
-            type="text"
-            id="createConfirmPassword"
-            name="confirmPassword"
-            placeholder="password"
-            required
-          />
+        <div class="set-password">
+          <div class="choose-password">
+            <label for="createPassword">Choose a password</label>
+            <input
+              type="text"
+              id="createPassword"
+              name="password"
+              placeholder="password"
+              required
+            />
+            <p>
+              Password must be at least 8 characters and contain one numeral and
+              one symbol.
+            </p>
+          </div>
+          <div class="choose-password">
+            <label for="createConfirmPassword">Confirm password</label>
+            <input
+              type="text"
+              id="createConfirmPassword"
+              name="confirmPassword"
+              placeholder="password"
+              required
+            />
+          </div>
         </div>
+        <select name="region" id="choose-region">
+          <option value="">Choose your region</option>
+          <option value="Alola">Alola</option>
+          <option value="Galar">Galar</option>
+          <option value="Hoenn">Hoenn</option>
+          <option value="Johto">Johto</option>
+          <option value="Kalos">Kalos</option>
+          <option value="Kanto">Kanto</option>
+          <option value="Paldea">Paldea</option>
+          <option value="Sinnoh">Sinnoh</option>
+          <option value="Unova">Unova</option>
+        </select>
+        <input
+          type="submit"
+          value="Create Trainer Profile"
+          id="create-submit"
+          aria-label="Create trainer profile"
+        />
       </div>
-      <select name="region" id="choose-region">
-        <option value="">Choose your region</option>
-        <option value="Alola">Alola</option>
-        <option value="Galar">Galar</option>
-        <option value="Hoenn">Hoenn</option>
-        <option value="Johto">Johto</option>
-        <option value="Kalos">Kalos</option>
-        <option value="Kanto">Kanto</option>
-        <option value="Paldea">Paldea</option>
-        <option value="Sinnoh">Sinnoh</option>
-        <option value="Unova">Unova</option>
-      </select>
-      <input type="submit" value="Create Trainer Profile" id="create-submit" />
     </form>
     <%- include("./partials/footer")%>
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
     <script src="/js/createProfile.js"></script>
   </body>
 </html>

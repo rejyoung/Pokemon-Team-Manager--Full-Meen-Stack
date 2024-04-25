@@ -1,0 +1,128 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css");
+/******************/
+/* Create Trainer */
+/******************/
+
+.create-form {
+  width: 1050px;
+  height: 500px;
+  margin: 30px auto 0 auto;
+  background-color: white;
+  border: 5px var(--pokemon-blue) solid;
+  border-radius: 30px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+}
+
+.drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  width: 380px;
+  height: 380px;
+  padding: 10px;
+  margin: 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+#preview {
+  width: 380px;
+  height: 380px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#preview img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.create-form-info {
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-names,
+.set-password {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.create-form p {
+  font-size: 0.75rem;
+  margin-top: 10px;
+  text-align: right;
+}
+
+.choose-username,
+.choose-password,
+.choose-display-name {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  width: 70%;
+  margin-top: 10px;
+  padding: 0 15px;
+  flex-grow: 1;
+}
+
+.choose-username label,
+.choose-password label,
+.choose-display-name label {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.choose-username input,
+.choose-password input,
+.confirm-password input,
+.choose-display-name input {
+  font-family: "Asap Condensed", sans-serif;
+  font-size: 1.25rem;
+  padding: 8px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+#choose-region {
+  font-family: "Asap Condensed", sans-serif;
+  font-size: 1.25rem;
+  padding: 8px;
+  border-radius: 10px;
+  width: 70%;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#create-submit {
+  font-family: "Asap Condensed", sans-serif;
+  background-color: var(--pokemon-blue);
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  opacity: 0.6;
+}

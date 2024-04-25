@@ -1,33 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
     <%- include("./partials/head") %>
-<body>
+    <link
+      rel="stylesheet"
+      href="/css/mobile/M-pokedex.css"
+      media="screen and (max-width: 699px)"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/desktop/DT-pokedex.css"
+      media="screen and (min-width: 700px)"
+    />
+  </head>
+  <body>
     <%- include("./partials/header") %>
-    
+
     <main>
-        <h1>Pokédex</h1>
-        
-        <div class="search-box">
-            <label for="search-input">Search</label>
-            <input type="text" id="search-input" placeholder="pokémon name or pokédex no.">
-        </div>
-        <h2 class="no-results" style="display: none">Oops! We couldn't find any matching Pokemon. Maybe try searching for something else?</h2>
-        <div class="pokedex">
+      <h1>Pokédex</h1>
+
+      <div class="search-box">
+        <label for="search-input">Search</label>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="pokémon name or pokédex no."
+        />
+      </div>
+      <h2 class="no-results" style="display: none">
+        Oops! We couldn't find any matching Pokemon. Maybe try searching for
+        something else?
+      </h2>
+      <div class="pokedex">
+        <script>
+          const pokedex = document.querySelector(".pokedex");
+          let pokedexWidth = pokedex.clientWidth;
+          let columnNum = ~~(pokedexWidth / 200);
+          let columnGap = (pokedexWidth - columnNum * 180) / (columnNum - 1);
+          if (window.innerWidth > 699) {
+            pokedex.style.gridTemplateColumns = `repeat(${columnNum}, 180px)`;
+            pokedex.style.columnGap = `${columnGap}px`;
+          }
+
+          window.addEventListener("resize", () => {
+            if (window.innerWidth > 699) {
+              let pokedexWidth = pokedex.clientWidth;
+              let columnNum = ~~(pokedexWidth / 200);
+              let columnGap =
+                (pokedexWidth - columnNum * 180) / (columnNum - 1);
+              pokedex.style.gridTemplateColumns = `repeat(${columnNum}, 180px)`;
+              pokedex.style.columnGap = `${columnGap}px`;
+            }
+          });
+        </script>
         <% pokedex.forEach((pokemon) => { %>
-            <div class="pokedex-entry" id="<%=pokemon._id%>" data-name="<%=pokemon.Name%>" data-pokedex="<%=pokemon.PokedexID%>">
-                <img src=<%=pokemon.ImgPath%>></a>
-                <!-- prettier-ignore -->
-                <% let pokeName = pokemon.Name.startsWith('mr.') ? pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1, 4) + pokemon.Name[4].toUpperCase() + pokemon.Name.slice(5): pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1)%>
-                <div class="pokedex-label">
-                    <h3><%=pokeName%></h3>
-                    <h4>#<%=String(pokemon.PokedexID).padStart(4, 0)%></h4>
-                </div>
-            </div>
-        <% }) %>
+        <div
+          class="pokedex-entry"
+          id="<%=pokemon._id%>"
+          data-name="<%=pokemon.Name%>"
+          data-pokedex="<%=pokemon.PokedexID%>"
+        >
+          <img alt="A typical <%=pokemon.Name%>" src="<%=pokemon.ImgPath%>" />
+          <!-- prettier-ignore -->
+          <% let pokeName = pokemon.Name.startsWith('mr.') ? pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1, 4) + pokemon.Name[4].toUpperCase() + pokemon.Name.slice(5): pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1)%>
+          <div class="pokedex-label">
+            <h3><%=pokeName%></h3>
+            <h4>#<%=String(pokemon.PokedexID).padStart(4, 0)%></h4>
+          </div>
         </div>
+        <% }) %>
+      </div>
     </main>
     <%- include("./partials/footer")%>
     <script src="/js/search.js"></script>
     <script src="/js/pokedex.js"></script>
-</body>
+  </body>
 </html>

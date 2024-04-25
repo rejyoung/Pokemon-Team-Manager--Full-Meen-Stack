@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("./partials/head") %>
+  <head>
+    <%- include("./partials/head") %>
+    <link
+      rel="stylesheet"
+      href="/css/mobile/M-single-species.css"
+      media="screen and (max-width: 699px)"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/desktop/DT-single-species.css"
+      media="screen and (min-width: 700px)"
+    />
+  </head>
   <body>
     <%- include("./partials/header") %>
 
@@ -25,7 +37,7 @@
             <% }) %>
           </div>
         </div>
-        <img src="<%=pokemon.ImgPath%>">
+        <img alt="A typical <%=pokeName%>" src="<%=pokemon.ImgPath%>">
       </div>
       <div class="back-btn"><a href="/pokedex" class="pseudo-button">< Back to Pokédex</a></div>
     </main>

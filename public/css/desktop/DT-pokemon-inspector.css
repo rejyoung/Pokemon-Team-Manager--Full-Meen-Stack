@@ -1,0 +1,171 @@
+/*********************/
+/* Pokemon Inspector */
+/*********************/
+
+.pokemon-inspector {
+  position: absolute;
+  background-color: white;
+  border: 5px solid var(--pokemon-blue);
+  border-radius: 30px;
+  width: 600px;
+  height: 430px;
+  left: calc((100vw - 600px) / 2);
+  top: calc((100dvh - 430px + 30px) / 2);
+  z-index: 2;
+  display: none;
+  padding: 0 30px 30px 30px;
+  opacity: 0;
+}
+
+#close-inspector {
+  width: 20px;
+  height: auto;
+  position: absolute;
+  top: 1dvh;
+  right: 1vw;
+  cursor: pointer;
+}
+
+.pokemon-inspector-content {
+  display: flex;
+  height: 400px;
+}
+
+.pokemon-inspector-details {
+  width: 540px;
+  height: 400px;
+  display: flex;
+}
+
+.name-and-pic {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-and-pic img {
+  width: 300px;
+  height: auto;
+}
+
+.name-and-pic p {
+  margin-top: -20px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.name-and-pic h3 {
+  font-size: 3rem;
+  display: inline-block;
+  margin: 0;
+}
+
+.name-and-pic h4 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.poke-info {
+  padding: 30px;
+  width: 200px;
+}
+
+.types {
+  height: 93px;
+}
+
+.poke-info {
+  font-size: 1.25rem;
+}
+
+.poke-info h4 {
+  font-size: 1.25rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.moves {
+  background-color: lightgray;
+  padding: 10px;
+  min-height: 140px;
+  max-height: 140px;
+  display: grid;
+  width: 200px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
+  overflow-y: scroll;
+}
+
+.moves p {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+}
+
+.species-info {
+  width: 0;
+  height: 370px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  padding-left: 30px;
+  overflow: hidden;
+  border-left: 0px lightgray solid;
+}
+
+.species-info-container {
+  height: 370px;
+  width: 270px;
+  margin: 0;
+}
+
+.species-label {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.species-info h3 {
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.species-pokedex {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin: 0;
+}
+
+.species-info h4 {
+  font-size: 1.25rem;
+  margin-top: 20px;
+  margin-bottom: 9px;
+}
+
+.owners-box {
+  background-color: lightgray;
+  padding: 10px;
+  min-height: 140px;
+  max-height: 140px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
+  overflow-y: scroll;
+}
+
+#species-info-btn {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: lightgray;
+  color: black;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-family: "Asap Condensed", sans-serif;
+  border: none;
+}

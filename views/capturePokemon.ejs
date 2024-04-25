@@ -1,48 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include("./partials/head") %>
-<body>
-    <%- include("./partials/header") %>
-    
-    <main>
-        <h1>Pokédex</h1>
-        
-        <div class="sub-menu">
-            <button id="back-to-collection" data-trainer-token="<%=trainerToken%>">< Back to Trainer Collection</button>
-            <div class="search-box">
-                <label for="search-input">Search</label>
-                <input type="text" id="search-input" placeholder="pokémon name or pokédex no.">
+    <head>
+        <%- include("./partials/head") %>
+        <!-- <link rel="stylesheet" href="/css/pokemon.css" /> -->
+        <link
+            rel="stylesheet"
+            href="/css/mobile/M-pokedex.css"
+            media="screen and (max-width: 699px)"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/mobile/M-pokedex.css"
+            media="screen and (max-width: 699px)"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/desktop/DT-pokedex.css"
+            media="screen and (min-width: 700px)"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/mobile/M-capture.css"
+            media="screen and (max-width: 699px)"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/desktop/DT-capture.css"
+            media="screen and (min-width: 700px)"
+        />
+    </head>
+    <body>
+        <%- include("./partials/header") %>
+
+        <main>
+            <h1>Pokédex</h1>
+
+            <div class="sub-menu">
+                <button
+                    id="back-to-collection"
+                    data-trainer-token="<%=trainerToken%>"
+                >
+                    < Back to Trainer Collection
+                </button>
+                <div class="search-box">
+                    <label for="search-input">Search</label>
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="pokémon name or pokédex no."
+                    />
+                </div>
             </div>
-        </div>
-        <h2 class="no-results" style="display: none">Oops! We couldn't find any matching Pokemon. Maybe try searching for something else?</h2>
-        <div class="pokedex">
-        <% pokedex.forEach((pokemon) => { %>
-            <div class="capture-option">
-                <div class="pokedex-entry" id="<%=pokemon._id%>" data-name="<%=pokemon.Name%>" data-trainer-token="<%=trainerToken%>" data-pokedex="<%=pokemon.PokedexID%>">
-                    <img src=<%=pokemon.ImgPath%>></a>
-                    <% let pokeName = pokemon.Name.startsWith('mr.') ? pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1, 4) + pokemon.Name[4].toUpperCase() + pokemon.Name.slice(5): pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1)%>
-                    <div class="pokedex-label">
-                        <h3><%=pokeName%></h3>
-                        <h4>#<%=String(pokemon.PokedexID).padStart(4, 0)%></h4>
-                    </div>
-                    <div class="capture-button-bar">
-                        <button class="get-species-info" data-species-id="<%=pokemon._id%>">Species Info</button>
-                        <button class="capture-btn" data-species-id="<%=pokemon._id%>" data-trainer-token="<%=trainerToken%>">Capture<img src="/img/pokeball.svg"></button>
-                
+            <h2 class="no-results" style="display: none">
+                Oops! We couldn't find any matching Pokemon. Maybe try searching
+                for something else?
+            </h2>
+            <div class="pokedex">
+                <script>
+                    if (window.innerWidth >= 700) {
+                        const pokedex = document.querySelector(".pokedex");
+                        let pokedexWidth = pokedex.clientWidth;
+                        let columnNum = ~~(pokedexWidth / 200);
+                        let columnGap =
+                            (pokedexWidth - columnNum * 180) / (columnNum - 1);
+                        pokedex.style.gridTemplateColumns = `repeat(${columnNum}, 180px)`;
+                        pokedex.style.columnGap = `${columnGap}px`;
+
+                        window.addEventListener("resize", () => {
+                            let pokedexWidth = pokedex.clientWidth;
+                            let columnNum = ~~(pokedexWidth / 200);
+                            let columnGap =
+                                (pokedexWidth - columnNum * 180) /
+                                (columnNum - 1);
+                            pokedex.style.gridTemplateColumns = `repeat(${columnNum}, 180px)`;
+                            pokedex.style.columnGap = `${columnGap}px`;
+                        });
+                    }
+                </script>
+                <% pokedex.forEach((pokemon) => { %>
+                <div class="capture-option">
+                    <div
+                        class="pokedex-entry"
+                        id="<%=pokemon._id%>"
+                        data-name="<%=pokemon.Name%>"
+                        data-trainer-token="<%=trainerToken%>"
+                        data-pokedex="<%=pokemon.PokedexID%>"
+                    >
+                        <img
+                            alt="A typical <%=pokemon.Name%>"
+                            src="<%=pokemon.ImgPath%>"
+                        />
+                        <% let pokeName = pokemon.Name.startsWith('mr.') ?
+                        pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1, 4)
+                        + pokemon.Name[4].toUpperCase() + pokemon.Name.slice(5):
+                        pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1)%>
+                        <div class="pokedex-label">
+                            <h3><%=pokeName%></h3>
+                            <h4>
+                                #<%=String(pokemon.PokedexID).padStart(4, 0)%>
+                            </h4>
+                        </div>
+                        <div class="capture-button-bar">
+                            <button
+                                class="get-species-info"
+                                data-species-id="<%=pokemon._id%>"
+                            >
+                                Species Info
+                            </button>
+                            <button
+                                class="capture-btn"
+                                data-species-id="<%=pokemon._id%>"
+                                data-trainer-token="<%=trainerToken%>"
+                            >
+                                Capture<img src="/img/pokeball.svg" alt="" />
+                            </button>
+                        </div>
                     </div>
                 </div>
-                
+                <% }) %>
             </div>
-        <% }) %>
-        </div>
-        <div class="capture-pokemon-inspector">
-            <img src="/img/close.svg" id="close-inspector" />
-            <div class="capture-pokemon-species-info"></div>
-        </div>
-    </main>
-    <%- include("./partials/footer")%>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="/js/search.js"></script>
-    <script src="/js/capture.js"></script>
-</body>
+            <div class="capture-pokemon-inspector">
+                <img
+                    src="/img/close.svg"
+                    id="close-inspector"
+                    alt="Close species inspector window"
+                    role="button"
+                    tabindex="0"
+                />
+                <div class="capture-pokemon-species-info"></div>
+            </div>
+        </main>
+        <%- include("./partials/footer")%>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="/js/search.js"></script>
+        <script src="/js/capture.js"></script>
+    </body>
 </html>

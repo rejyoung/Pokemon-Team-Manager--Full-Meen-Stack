@@ -104,19 +104,4 @@ document.addEventListener("DOMContentLoaded", () => {
     () =>
       (window.location.href = `/trainer/profile/pokemonCollection?token=${backBtn.dataset.trainerToken}`)
   );
-
-  const pokedex = document.querySelector(".pokedex");
-  let pokedexWidth = pokedex.clientWidth;
-  let columnNum = ~~(pokedexWidth / 200);
-  let columnGap = (pokedexWidth - columnNum * 180) / (columnNum - 1);
-  pokedex.style.gridTemplateColumns = `repeat(${columnNum}, 180px)`;
-  pokedex.style.columnGap = `${columnGap}px`;
-
-  window.addEventListener("resize", () => {
-    let pokedexWidth = pokedex.clientWidth;
-    let columnNum = ~~(pokedexWidth / 200);
-    let columnGap = (pokedexWidth - columnNum * 180) / (columnNum - 1);
-    pokedex.style.gridTemplateColumns = `repeat(${columnNum}, 180px)`;
-    pokedex.style.columnGap = `${columnGap}px`;
-  });
 });

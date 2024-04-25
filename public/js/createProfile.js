@@ -94,3 +94,65 @@ usernameInput.addEventListener("input", () => {
     newUsernameChoice = false;
   }
 });
+
+//////////////////////////////
+///// Profile Pic Upload /////
+//////////////////////////////
+
+const dropArea = document.getElementById("drop-area");
+const fileElem = document.getElementById("fileElem");
+const preview = document.getElementById("preview");
+
+dropArea.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropArea.classList.add("active");
+});
+
+dropArea.addEventListener("dragleave", (e) => {
+  e.preventDefault();
+  dropArea.classList.remove("active");
+});
+
+dropArea.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropArea.classList.remove("active");
+  const files = e.dataTransfer.files;
+  handleFiles(files);
+});
+
+fileElem.addEventListener("change", (e) => {
+  const files = e.target.files;
+  handleFiles(files);
+});
+
+function handleFiles(files) {
+  const file = files[0];
+  if (file.type.startsWith("image/")) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const image = new Image();
+      image.onload = () => {
+        // Ensure the image is fully loaded
+        preview.innerHTML = ""; // Clear the previous contents
+        preview.appendChild(image); // Append the new image
+
+        const cropper = new Cropper(image, {
+          viewMode: 3,
+          dragMode: "move",
+          aspectRatio: 1,
+          autoCrop: true,
+          autoCropArea: 1,
+          restore: false,
+          guides: false,
+          center: false,
+          highlight: false,
+          cropBoxMovable: false,
+          cropBoxResizable: false,
+          toggleDragModeOnDblclick: false,
+        });
+      };
+      image.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}

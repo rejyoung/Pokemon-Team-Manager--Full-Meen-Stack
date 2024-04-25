@@ -1,0 +1,45 @@
+/************/
+/* Homepage */
+/************/
+
+.home-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.home-main img {
+  margin-left: -40px;
+  width: 700px;
+  height: auto;
+}
+
+.site-description {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.home-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-buttons p {
+  font-size: 1.25rem;
+  margin: 10px;
+}
+
+.home-buttons a {
+  font-family: "Asap Condensed", sans-serif;
+  background-color: var(--pokemon-blue);
+  padding: 10px;
+  color: white;
+  font-size: 1.75rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}

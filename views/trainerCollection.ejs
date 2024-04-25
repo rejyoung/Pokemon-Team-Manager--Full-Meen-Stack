@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include("./partials/head") %>
+    <head>
+        <%- include("./partials/head") %>
+        <link
+          rel="stylesheet"
+          href="/css/mobile/M-trainer-collection.css"
+          media="screen and (max-width: 699px)"
+        />
+        <link
+          rel="stylesheet"
+          href="/css/desktop/DT-trainer-collection.css"
+          media="screen and (min-width: 700px)"
+        />
+        <link
+          rel="stylesheet"
+          href="/css/mobile/M-pokemon-inspector.css"
+          media="screen and (max-width: 699px)"
+        />
+        <link
+          rel="stylesheet"
+          href="/css/desktop/DT-pokemon-inspector.css"
+          media="screen and (min-width: 700px)"
+        />
+      </head>
 <body>
     <%- include("./partials/header") %>
     
     <main>
-        <h1><%=trainerName%>'s Pokémon Collection</h1>
+        <h1><%=trainerName%>'s <span id="header-line-break"><br></span>Pokémon Collection</h1>
         
         <div class="sub-menu">
             <div class="collection-buttons">
@@ -22,6 +44,22 @@
             <h2 class="collection-empty">This trainer doesn't have any pokémon yet! Time to grab some pokéballs and head out into the field!</h2>
         <%}%>
         <div class="collection" id="<%=trainerToken%>" data-username="<%=username%>">
+        <script>
+            const collection = document.querySelector(".collection");
+            let collectionWidth = collection.clientWidth;
+            let columnNum = ~~(collectionWidth / 220);
+            let columnGap = (collectionWidth - columnNum * 200) / (columnNum - 1);
+            collection.style.gridTemplateColumns = `repeat(${columnNum}, 200px)`;
+            collection.style.columnGap = `${columnGap}px`;
+
+            window.addEventListener("resize", () => {
+                let collectionWidth = collection.clientWidth;
+                let columnNum = ~~(collectionWidth / 220);
+                let columnGap = (collectionWidth - columnNum * 200) / (columnNum - 1);
+                collection.style.gridTemplateColumns = `repeat(${columnNum}, 200px)`;
+                collection.style.columnGap = `${columnGap}px`;
+            });
+        </script>
         <% collection.forEach((pokemon) => { %>
             <div class="pokemon" id="<%=pokemon._id%>" data-name="<%=pokemon.Nickname%>">
             <%if(pokemon.CanEvolve) {%>
@@ -29,12 +67,31 @@
             <%} else {%>
                 <div class="collection-pokemon" data-name="<%=pokemon.Nickname%>">
             <%}%>
-                    <img src=<%=pokemon.ImgURL%> class="collection-pokemon-image" id="<%=pokemon._id%>-img">
+                    <img 
+                        alt="Pokémon nicknamed <%=pokemon.Nickname%>" 
+                        src=<%=pokemon.ImgURL%> class="collection-pokemon-image" 
+                        id="<%=pokemon._id%>-img"
+                    />
                     <div class="collection-label">
                         <div class="collection-nickname">
                             <h3 id="nickname<%=pokemon._id%>"><%=pokemon.Nickname%></h3>
-                            <input tabindex="0" type="text" id="edit-<%=pokemon._id %>" data-pokemon-id="<%=pokemon._id%>" class="collection-edit-box" value="<%=pokemon.Nickname%>">
-                            <img class="collection-edit-name" data-input-box-id="edit-<%=pokemon._id%>" src="/img/edit-white.svg"></object>
+                            <input 
+                                tabindex="0" 
+                                type="text" 
+                                id="edit-<%=pokemon._id %>" 
+                                data-pokemon-id="<%=pokemon._id%>" 
+                                class="collection-edit-box" 
+                                value="<%=pokemon.Nickname%>" 
+                                aria-label="Enter new nickname"
+                            />
+                            <img 
+                                class="collection-edit-name" 
+                                data-input-box-id="edit-<%=pokemon._id%>" 
+                                src="/img/edit-white.svg"
+                                alt="Edit nickname"
+                                role="button"
+                                tabindex="0"
+                            />
                         </div>
                         <h4>Level <%=pokemon.Level%></h4>
                     </div>
@@ -49,20 +106,20 @@
                     </div>
                     <div class="side-buttons">
                         <%if(pokemon.CurrentTeam) {%>
-                            <img class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: none">
-                            <img class="remove-from-team" data-pokemon-id="<%=pokemon._id%>" src="/img/minus.svg" style="display: inline-block">
+                            <img alt="Add to team" class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: none" role="button" tabindex="0">
+                            <img alt="Remove from team button" class="remove-from-team" data-pokemon-id="<%=pokemon._id%>" src="/img/minus.svg" style="display: inline-block" role="button" tabindex="0">
                         <%} else {%>
-                            <img class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: inline-block">
-                            <img class="remove-from-team" data-pokemon-id="<%=pokemon._id%>" src="/img/minus.svg" style="display: none">
+                            <img alt="Add to team button" class="add-to-team" data-pokemon-id="<%=pokemon._id%>" src="/img/plus.svg" style="display: inline-block" role="button" tabindex="0">
+                            <img alt="Remove from team button" class="remove-from-team" data-pokemon-id="<%=pokemon._id%>" src="/img/minus.svg" style="display: none" role="button" tabindex="0">
                         <%}%>
-                        <img src="/img/level-up-arrow.svg" class="collection-level-up" data-pokemon-id="<%=pokemon._id%>">
+                        <img alt=""src="/img/level-up-arrow.svg" class="collection-level-up" data-pokemon-id="<%=pokemon._id%>">
                         <%if(pokemon.CanEvolve) {%>
-                            <img src="/img/evolve.svg" class="evolve" data-pokemon-id="<%=pokemon._id%>"> 
+                            <img src="/img/evolve.svg" class="evolve" data-pokemon-id="<%=pokemon._id%>" alt="Evolve <%=pokemon.Nickname%>" role="button" tabindex="0"> 
                         <%} else {%>
-                            <img src="/img/evolve.svg" class="evolve disabled" data-pokemon-id="<%=pokemon._id%>">
+                            <img src="/img/evolve.svg" class="evolve disabled" data-pokemon-id="<%=pokemon._id%>" alt="">
                         <%}%>
-                        <img src="/img/info.svg" class="info-btn" data-pokemon-id="<%=pokemon._id%>" data-species-id="<%=pokemon.SpeciesID%>">
-                        <button class="release" data-pokemon-id="<%=pokemon._id%>">Release Pokemon</button>
+                        <img src="/img/info.svg" class="info-btn" data-pokemon-id="<%=pokemon._id%>" data-species-id="<%=pokemon.SpeciesID%>" alt="Open pokémon inspector panel" role="button" tabindex="0">
+                        <button class="release" data-pokemon-id="<%=pokemon._id%>">Release</button>
                     </div>
                 </div>
                 
@@ -70,7 +127,13 @@
         <% }) %>
         </div>
         <div class="pokemon-inspector">
-            <img src="/img/close.svg" id="close-inspector">
+            <img 
+                src="/img/close.svg" 
+                id="close-inspector" 
+                alt="Close pokémon inspector panel"
+                role="button"
+                tabindex="0"
+            />
             <div class="pokemon-inspector-content">
                 <div class="pokemon-inspector-details"></div>
                 <div class="species-info"></div>

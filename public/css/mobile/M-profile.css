@@ -1,0 +1,327 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css");
+/*******************/
+/* Trainer Profile */
+/*******************/
+
+main {
+    padding: 0;
+}
+
+.page-contents {
+    width: 100vw;
+    margin: 70px 0 0 0;
+    position: relative;
+}
+
+.profile {
+    width: 100vw;
+    display: grid;
+    background-color: white;
+    padding: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "pic pic pic"
+        "pic pic pic"
+        "pic pic pic"
+        "basicInfo basicInfo capture"
+        "team team team"
+        "team team team";
+    column-gap: 20px;
+    min-height: calc(100dvh - 70px);
+}
+
+.profile-pic {
+    grid-area: pic;
+    width: 100%;
+    height: auto;
+}
+
+.name-and-region {
+    grid-area: basicInfo;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.profile-name-label,
+.profile-region-label {
+    font-style: italic;
+    font-weight: 300;
+    margin: 10px 0 0 0;
+    font-size: 1.15rem;
+}
+
+.trainer-name {
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.trainer-region {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.manage-btns {
+    grid-area: capture;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+#manage-team {
+    margin-top: 20px;
+}
+
+.trainer-team {
+    grid-area: team;
+}
+
+.trainer-team h3 {
+    margin-top: none;
+}
+.current-team {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.pokemon-collection {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-items: start;
+}
+
+.pokemon-thumb {
+    width: 100%;
+    height: auto;
+    background-color: #fcce0074;
+    position: relative;
+    text-align: center;
+    padding: 7.5px 15px 15px 15px;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+}
+
+.pokemon-thumb h4 {
+    margin: -5px 0;
+}
+
+.pokemon-thumb h5 {
+    text-align: right;
+    margin: 0;
+}
+
+.pokemon-thumb .info-btn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    width: 20px;
+}
+
+.info-btn {
+    cursor: pointer;
+}
+
+.pokemon-image {
+    width: auto;
+    height: 35vw;
+}
+
+.nickname {
+    display: flex;
+    align-items: center;
+}
+
+.nickname img {
+    width: 15px;
+    height: auto;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.edit-box {
+    display: none;
+    position: absolute;
+    width: 7vw;
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding-left: 2px;
+    margin-left: -4px;
+    border-radius: 5px;
+    border: 1px var(--pokemon-blue) solid;
+}
+
+/****** Profile Management ******/
+
+.manage-account-frame {
+    width: 100vw;
+    height: calc(100dvh - 70px);
+    margin: 0 auto;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    overflow: hidden;
+    display: none;
+}
+
+.manage-account-window {
+    width: 100vw;
+    height: 100%;
+    background-color: white;
+    margin: 0 auto;
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#close-manage {
+    z-index: 5;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+    transition: transform ease-in-out 0.3s;
+}
+
+#password-back-to-options,
+#name-back-to-options {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.manage-message {
+    color: black;
+    font-weight: 500;
+    visibility: hidden;
+}
+.manage-options {
+    height: calc(100dvh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.manage-options button {
+    margin: 30px;
+    font-size: 1.25rem;
+    width: 70%;
+}
+
+#delete-trainer {
+    background-color: #cc0000;
+}
+
+.change-display-name-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100dvh - 70px);
+    display: none;
+}
+
+.change-password,
+.change-display-name {
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+#name-save,
+#password-save {
+    width: 30vw;
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+.change-display-name,
+.change-name-password,
+#name-save {
+    margin: 30px;
+}
+
+#newName,
+#change-name-password,
+#name-save,
+.change-display-name label,
+.change-name-password label {
+    font-size: 1.5rem;
+}
+
+.change-password-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100dvh - 70px);
+    display: none;
+}
+
+.change-password p {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+#newName,
+#change-name-password,
+#oldPassword,
+#newPassword,
+#confirmPassword {
+    border-radius: 10px;
+    font-size: 1.25rem;
+    padding: 8px;
+    border: 3px var(--pokemon-blue) solid;
+    width: 400px;
+    margin: 10px 0;
+}
+
+.delete-confirm {
+    position: absolute;
+    z-index: 6;
+    width: 80vw;
+    height: 60dvh;
+    left: 10vw;
+    top: 175px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    border: 5px solid var(--pokemon-blue);
+    opacity: 0;
+}
+
+.confirm-text {
+    text-align: center;
+}
+.yes-no-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.yes-no-btns button {
+    width: 60px;
+    margin-top: 40px;
+}

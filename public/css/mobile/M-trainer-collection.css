@@ -1,0 +1,320 @@
+/**********************/
+/* Trainer Collection */
+/**********************/
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    padding: 10px 0;
+    position: fixed;
+    top: 115px;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    z-index: 7;
+    color: white;
+    vertical-align: center;
+    background-color: var(--pokemon-blue, blue);
+}
+
+.collection-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--pokemon-blue);
+    z-index: 7;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 45px;
+}
+
+#capture,
+#back-to-profile {
+    background-color: white;
+    color: var(--pokemon-blue);
+    margin: 5px 10px;
+}
+
+.search-box {
+    position: fixed;
+    top: 225px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    z-index: 7;
+    background-color: var(--pokemon-blue);
+}
+
+.search-box label {
+    margin-right: 20px;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.search-box input {
+    font-family: "Asap Condensed", sans-serif;
+    padding: 4px;
+    font-size: 1rem;
+    width: 195px;
+}
+
+.collection {
+    margin-top: 275px;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.collection::after {
+    width: 46vw;
+    height: 60vw;
+    content: "";
+}
+
+.collection > :nth-child(odd) {
+    margin-left: 2vw;
+}
+
+.pokemon {
+    position: relative;
+    width: 46vw;
+}
+
+.collection-pokemon {
+    width: 46vw;
+    height: 60vw;
+    margin-bottom: 10vw;
+    border: solid var(--pokemon-blue) 5px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.collection-nickname {
+    display: flex;
+    align-items: center;
+}
+
+.collection-edit-box {
+    display: none;
+    position: absolute;
+    width: 80%;
+    font-family: "Asap Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding-left: 0;
+    margin-left: -2px;
+    background-color: #cc0000;
+    color: white;
+}
+
+.collection-edit-name {
+    width: 16px;
+    height: auto;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.collection-pokemon-image {
+    width: 44vw;
+    height: auto;
+}
+
+.collection-label {
+    background-color: #cc0000;
+    color: white;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.collection-pokemon h3 {
+    text-align: left;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.collection-pokemon h4 {
+    text-align: right;
+    margin: 0;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.level-options-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(46vw - 9px);
+    height: 0;
+    background-color: white;
+    overflow-y: scroll;
+    z-index: 3;
+}
+
+.level-options {
+    height: 250px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.level-option {
+    border-bottom: 1px lightgray solid;
+    cursor: pointer;
+}
+
+.level-option:hover {
+    background-color: var(--pokemon-blue);
+    color: white;
+}
+
+.level-option p {
+    margin: 8px 0;
+}
+
+.side-buttons {
+    position: absolute;
+    bottom: -9vw;
+    left: -5px;
+    width: 46vw;
+    border-radius: 0 0 5px 5px;
+    height: 8vw;
+    padding: 5px;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--pokemon-blue);
+}
+
+.release {
+    width: 120px;
+    height: 6vw;
+    padding: 0;
+    border-radius: 0;
+    background-color: white;
+    border-radius: 4px;
+    color: var(--pokemon-blue);
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.add-to-team,
+.remove-from-team,
+.info-btn,
+.collection-level-up,
+.evolve {
+    width: 6vw;
+    height: auto;
+    margin-right: 5px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.6;
+}
+
+/*******************/
+/* Evolution Popup */
+/*******************/
+
+.evolution-popup {
+    position: fixed;
+    background-color: white;
+    border: var(--pokemon-blue) solid 5px;
+    height: 60dvh;
+    width: 90vw;
+    padding: 2dvh, 3vw;
+    top: 20dvh;
+    left: 5vw;
+    border-radius: 30px;
+    display: none;
+    opacity: 0;
+    z-index: 7;
+    /* display: block;
+    opacity: 1; */
+}
+
+.evolution-popup h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+.evolution-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.evolution-div {
+    height: 16dvh;
+    width: 25vw;
+    cursor: pointer;
+}
+
+.evolution-image {
+    width: 100%;
+    height: auto;
+}
+
+.evolution-name {
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 1dvh 0;
+}
+
+.capture-option {
+    position: relative;
+}
+
+.capture-option > .pokedex-entry {
+    margin-bottom: 40px;
+}
+
+.capture-button-bar {
+    position: absolute;
+    left: -5px;
+    bottom: -40px;
+    padding: 5px 10px;
+    height: 40px;
+    width: 180px;
+    background-color: var(--pokemon-blue);
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.capture-btn {
+    height: 20px;
+    background: none;
+    padding: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.capture-btn img {
+    width: 20px;
+    height: auto;
+    margin-left: 8px;
+}
+
+.get-species-info {
+    height: 20px;
+    background: none;
+    padding: 0;
+    font-size: 1rem;
+}
