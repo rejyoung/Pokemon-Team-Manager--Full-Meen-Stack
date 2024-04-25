@@ -77,14 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (response.status === 200) {
                         box.previousElementSibling.innerText = `${response.data.nickname}`;
                     }
-                    if (response.status === 401) {
-                        window.location.href = "/login";
-                    }
                 })
                 .then(setTimeout(() => (box.style.display = "none"), 150))
                 .catch((error) => {
-                    console.error("Request failed", error);
-                    box.style.display = "none";
+                    if (response.status === 401) {
+                        window.location.href = "/login";
+                    } else {
+                        console.error("Request failed", error);
+                        box.style.display = "none";
+                    }
                 });
         }
 
