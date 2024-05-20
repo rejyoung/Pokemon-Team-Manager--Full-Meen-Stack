@@ -44,9 +44,11 @@ h1 {
 
 .pokedex {
     margin: 200px auto 30px auto;
+    width: 94vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    column-gap: 0;
 }
 
 .pokedex::after {

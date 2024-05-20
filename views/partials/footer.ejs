@@ -4,25 +4,34 @@
     const menuButton = document.querySelector("#menu-button");
     const nav = document.querySelector("nav");
     const numMenuItems = document.querySelectorAll("nav ul li").length;
-    if (window.location.pathname != "/") {
-        menuButton.addEventListener("click", () => {
+
+    menuButton.addEventListener("click", () => {
+        if (
+            (window.innerWidth <= 885 && window.innerWidth > 699) ||
+            (window.location.pathname != "/" && window.innerWidth <= 699)
+        ) {
             if (!nav.style.height || nav.style.height === "0px") {
                 nav.style.height = String(numMenuItems * 50 + 10) + "px";
             } else {
                 nav.style.height = 0;
             }
-        });
+        }
+    });
 
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 699) {
-                nav.removeAttribute("style");
-            } else {
+    window.addEventListener("resize", () => {
+        if (
+            window.innerWidth >= 885 ||
+            (window.location.pathname === "/" && window.innerWidth <= 699)
+        ) {
+            nav.removeAttribute("style");
+        } else {
+            if (nav.style.height !== "0px") {
                 nav.style.visibility = "hidden";
                 nav.style.height = 0;
                 setTimeout(() => {
                     nav.style.visibility = "visible";
                 }, 201);
             }
-        });
-    }
+        }
+    });
 </script>

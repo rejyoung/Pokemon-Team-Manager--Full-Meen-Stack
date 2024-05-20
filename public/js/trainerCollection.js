@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const speciesInfoBtn = document.querySelector("#species-info-btn");
     const evolutionOptions = document.querySelector(".evolution-options");
     const evolutionPopup = document.querySelector(".evolution-popup");
+    const closeEvolve = document.querySelector("#close-evolution");
 
     // Set axios to send cookies along with the requests
     axios.defaults.withCredentials = true;
@@ -111,7 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 `#levels${btn.dataset.pokemonId}`
             );
             if (levelOptions.style.height === "0px") {
-                gsap.to(levelOptions, { duration: 0.2, height: "250px" });
+                if (window.innerWidth < 700) {
+                    console.log("working");
+                    gsap.to(levelOptions, {
+                        duration: 0.2,
+                        height: "100%",
+                    });
+                } else {
+                    gsap.to(levelOptions, { duration: 0.2, height: "250px" });
+                }
             } else {
                 gsap.to(levelOptions, { duration: 0.2, height: "0px" });
             }
@@ -384,7 +393,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                 // Adjust pop-up width based on number of evolutions to be displayed
                                 if (window.innerWidth >= 700) {
-                                    if (evNum > 2) {
+                                    if (evNum > 4 && window.innerWidth < 885) {
+                                        evolutionPopup.style.width = "56vw";
+                                        evolutionPopup.style.left = "22vw";
+                                        evolutionOptions.style.justifyContent =
+                                            "space-around";
+                                        evolutionOptions.style.flexWrap =
+                                            "wrap";
+                                    } else if (evNum > 2) {
                                         evolutionPopup.style.width =
                                             evNum * 10 + 10 + "vw";
                                         evolutionPopup.style.left =
@@ -427,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    evolutionPopup.addEventListener("blur", () => {
+    closeEvolve.addEventListener("click", () => {
         gsap.timeline()
             .to(evolutionPopup, { duration: 0.3, opacity: 0 })
             .set(evolutionPopup, { display: "none" });

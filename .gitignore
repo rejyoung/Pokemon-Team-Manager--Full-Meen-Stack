@@ -4,3 +4,7 @@ Future.md
 node_modules
 package-lock.json
 team-manager.svg
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

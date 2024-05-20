@@ -1,163 +1,110 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 :root {
-  --textColor: black;
-  --normal: #a8a77a;
-  --fire: #ee8130;
-  --water: #6390f0;
-  --electric: #f7d02c;
-  --grass: #7ac74c;
-  --ice: #96d9d6;
-  --fighting: #c22e28;
-  --poison: #a33ea1;
-  --ground: #e2bf65;
-  --flying: #a98ff3;
-  --psychic: #f95587;
-  --bug: #a6b91a;
-  --rock: #b6a136;
-  --ghost: #735797;
-  --dragon: #6f35fc;
-  --dark: #705746;
-  --steel: #b7b7ce;
-  --fairy: #d685ad;
-  --kanto-main: #ff0000;
-  --kanto-accent: #008000;
-  --johto-main: #ffd700;
-  --johto-accent: #c0c0c0;
-  --hoenn-main: #a00000;
-  --hoenn-accent: #0000ff;
-  --sinnoh-main: #696969;
-  --sinnoh-accent: #e5e4e2;
-  --unova-main: #000000;
-  --unova-accent: #ffffff;
-  --kalos-main: #003a70;
-  --kalos-accent: #c8102e;
-  --alola-main: #ffd700;
-  --alola-accent: #87ceeb;
-  --galar-main: #c0c0c0;
-  --galar-accent: #003087;
-  --paldea-main: #ff2400;
-  --paldea-accent: #8a2be2;
-  --pokemon-blue: #2468b1;
-  --pokemon-yellow: #fccf00;
-  --green-accent: #7ac74c;
+    --textColor: black;
+    --normal: #a8a77a;
+    --fire: #ee8130;
+    --water: #6390f0;
+    --electric: #f7d02c;
+    --grass: #7ac74c;
+    --ice: #96d9d6;
+    --fighting: #c22e28;
+    --poison: #a33ea1;
+    --ground: #e2bf65;
+    --flying: #a98ff3;
+    --psychic: #f95587;
+    --bug: #a6b91a;
+    --rock: #b6a136;
+    --ghost: #735797;
+    --dragon: #6f35fc;
+    --dark: #705746;
+    --steel: #b7b7ce;
+    --fairy: #d685ad;
+    --kanto-main: #ff0000;
+    --kanto-accent: #008000;
+    --johto-main: #ffd700;
+    --johto-accent: #c0c0c0;
+    --hoenn-main: #a00000;
+    --hoenn-accent: #0000ff;
+    --sinnoh-main: #696969;
+    --sinnoh-accent: #e5e4e2;
+    --unova-main: #000000;
+    --unova-accent: #ffffff;
+    --kalos-main: #003a70;
+    --kalos-accent: #c8102e;
+    --alola-main: #ffd700;
+    --alola-accent: #87ceeb;
+    --galar-main: #c0c0c0;
+    --galar-accent: #003087;
+    --paldea-main: #ff2400;
+    --paldea-accent: #8a2be2;
+    --pokemon-blue: #2468b1;
+    --pokemon-yellow: #fccf00;
+    --green-accent: #7ac74c;
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  width: 100vw;
-  font-family: "Asap Condensed", sans-serif;
-  background-color: #fcce0074;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    font-family: "Asap Condensed", sans-serif;
+    background-color: #fcce0074;
 }
 
 main {
-  padding: 30px 3vw;
-  max-width: 100vw;
+    padding: 30px 3vw;
+    max-width: 100vw;
+}
+
+@media screen and (max-width: 884px) {
+    main {
+        margin-top: 70px;
+    }
 }
 
 h1 {
-  text-align: center;
-  font-size: 4rem;
-  margin-bottom: 0;
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 0;
 }
 
 button {
-  font-family: "Asap Condensed", sans-serif;
-  background-color: var(--pokemon-blue);
-  padding: 10px;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+    font-family: "Asap Condensed", sans-serif;
+    background-color: var(--pokemon-blue);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 input {
-  font-family: "Asap Condensed", sans-serif;
+    font-family: "Asap Condensed", sans-serif;
 }
 
 .pseudo-button {
-  font-family: "Asap Condensed", sans-serif;
-  background-color: var(--pokemon-blue);
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+    font-family: "Asap Condensed", sans-serif;
+    background-color: var(--pokemon-blue);
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 a {
-  text-decoration: none;
-  color: var(--textColor);
+    text-decoration: none;
+    color: var(--textColor);
 }
 
 a:visited {
-  text-decoration: none;
-  color: var(--textColor);
+    text-decoration: none;
+    color: var(--textColor);
 }
 
 :focus {
-  outline: none;
-}
-
-/**********/
-/* Header */
-/**********/
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #7ac74c;
-  height: 70px;
-  padding: 0 20px;
-}
-
-.logo {
-  height: 70px;
-  width: auto;
-}
-
-#menu-button {
-  display: none;
-}
-
-nav {
-  height: 70px;
-  font-weight: 600;
-}
-nav ul {
-  list-style: none;
-  height: 70px;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-nav li {
-  height: 70px;
-}
-
-nav a,
-nav div {
-  height: 100%;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-}
-
-nav a p,
-nav div p {
-  color: white;
-  font-size: 1.5rem;
-  margin: 0;
-}
-
-nav div,
-nav div p {
-  cursor: pointer;
+    outline: none;
 }
 
 /*****************/
@@ -165,126 +112,126 @@ nav div p {
 /*****************/
 
 .type {
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px black;
-  width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px black;
+    width: 200px;
 }
 
 .normal {
-  background-color: var(--normal);
+    background-color: var(--normal);
 }
 .fire {
-  background-color: var(--fire);
+    background-color: var(--fire);
 }
 .water {
-  background-color: var(--water);
-  color: white;
+    background-color: var(--water);
+    color: white;
 }
 .flying {
-  background-color: var(--flying);
+    background-color: var(--flying);
 }
 .grass {
-  background-color: var(--grass);
+    background-color: var(--grass);
 }
 .poison {
-  background-color: var(--poison);
-  color: white;
+    background-color: var(--poison);
+    color: white;
 }
 .ground {
-  background-color: var(--ground);
+    background-color: var(--ground);
 }
 .ghost {
-  background-color: var(--ghost);
+    background-color: var(--ghost);
 }
 .electric {
-  background-color: var(--electric);
+    background-color: var(--electric);
 }
 .dragon {
-  background-color: var(--dragon);
-  color: white;
+    background-color: var(--dragon);
+    color: white;
 }
 .dark {
-  background-color: var(--dark);
+    background-color: var(--dark);
 }
 .steel {
-  background-color: var(--steel);
+    background-color: var(--steel);
 }
 .fairy {
-  background-color: var(--fairy);
+    background-color: var(--fairy);
 }
 .rock {
-  background-color: var(--rock);
+    background-color: var(--rock);
 }
 .ice {
-  background-color: var(--ice);
+    background-color: var(--ice);
 }
 .fighting {
-  background-color: var(--fighting);
-  color: white;
+    background-color: var(--fighting);
+    color: white;
 }
 .psychic {
-  background-color: var(--psychic);
-  color: white;
+    background-color: var(--psychic);
+    color: white;
 }
 .bug {
-  background-color: var(--bug);
+    background-color: var(--bug);
 }
 
 .normal-details {
-  border: 5px solid var(--normal);
+    border: 5px solid var(--normal);
 }
 .fire-details {
-  border: 5px solid var(--fire);
+    border: 5px solid var(--fire);
 }
 .water-details {
-  border: 5px solid var(--water);
+    border: 5px solid var(--water);
 }
 .flying-details {
-  border: 5px solid var(--flying);
+    border: 5px solid var(--flying);
 }
 .grass-details {
-  border: 5px solid var(--grass);
+    border: 5px solid var(--grass);
 }
 .poison-details {
-  border: 5px solid var(--poison);
+    border: 5px solid var(--poison);
 }
 .ground-details {
-  border: 5px solid var(--ground);
+    border: 5px solid var(--ground);
 }
 .ghost-details {
-  border: 5px solid var(--ghost);
+    border: 5px solid var(--ghost);
 }
 .electric-details {
-  border: 5px solid var(--electric);
+    border: 5px solid var(--electric);
 }
 .dragon-details {
-  border: 5px solid var(--dragon);
+    border: 5px solid var(--dragon);
 }
 .dark-details {
-  border: 5px solid var(--dark);
+    border: 5px solid var(--dark);
 }
 .steel-details {
-  border: 5px solid var(--steel);
+    border: 5px solid var(--steel);
 }
 .fairy-details {
-  border: 5px solid var(--fairy);
+    border: 5px solid var(--fairy);
 }
 .rock-details {
-  border: 5px solid var(--rock);
+    border: 5px solid var(--rock);
 }
 .ice-details {
-  border: 5px solid var(--ice);
+    border: 5px solid var(--ice);
 }
 .fighting-details {
-  border: 5px solid var(--fighting);
+    border: 5px solid var(--fighting);
 }
 .psychic-details {
-  border: 5px solid var(--psychic);
+    border: 5px solid var(--psychic);
 }
 .bug-details {
-  border: 5px solid var(--bug);
+    border: 5px solid var(--bug);
 }
 
 /********************/
@@ -292,46 +239,46 @@ nav div p {
 /********************/
 
 .Alola {
-  border: 5px solid var(--alola-main);
-  color: var(--alola-accent);
-  border-radius: 10px;
+    border: 5px solid var(--alola-main);
+    color: var(--alola-accent);
+    border-radius: 10px;
 }
 .Galar {
-  border: 5px solid var(--galar-main);
-  color: var(--galar-accent);
-  border-radius: 10px;
+    border: 5px solid var(--galar-main);
+    color: var(--galar-accent);
+    border-radius: 10px;
 }
 .Hoenn {
-  border: 5px solid var(--hoenn-main);
-  color: var(--hoenn-accent);
-  border-radius: 10px;
+    border: 5px solid var(--hoenn-main);
+    color: var(--hoenn-accent);
+    border-radius: 10px;
 }
 .Johto {
-  border: 5px solid var(--johto-main);
-  color: var(--johto-accent);
-  border-radius: 10px;
+    border: 5px solid var(--johto-main);
+    color: var(--johto-accent);
+    border-radius: 10px;
 }
 .Kalos {
-  border: 5px solid var(--kalos-main);
-  color: var(--kalos-accent);
-  border-radius: 10px;
+    border: 5px solid var(--kalos-main);
+    color: var(--kalos-accent);
+    border-radius: 10px;
 }
 .Kanto {
-  border: 5px solid var(--kanto-main);
-  color: var(--kanto-accent);
-  border-radius: 10px;
+    border: 5px solid var(--kanto-main);
+    color: var(--kanto-accent);
+    border-radius: 10px;
 }
 .Paldea {
-  border: 5px solid var(--paldea-main);
-  color: var(--paldea-accent);
-  border-radius: 10px;
+    border: 5px solid var(--paldea-main);
+    color: var(--paldea-accent);
+    border-radius: 10px;
 }
 .Sinnoh {
-  border: 5px solid var(--sinnoh-accent);
-  color: var(--sinnoh-main);
-  border-radius: 10px;
+    border: 5px solid var(--sinnoh-accent);
+    color: var(--sinnoh-main);
+    border-radius: 10px;
 }
 .Unova {
-  border: 5px solid var(--unova-main);
-  border-radius: 10px;
+    border: 5px solid var(--unova-main);
+    border-radius: 10px;
 }

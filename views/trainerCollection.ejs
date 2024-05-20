@@ -45,19 +45,29 @@
         <%}%>
         <div class="collection" id="<%=trainerToken%>" data-username="<%=username%>">
         <script>
+
             const collection = document.querySelector(".collection");
             let collectionWidth = collection.clientWidth;
             let columnNum = ~~(collectionWidth / 220);
             let columnGap = (collectionWidth - columnNum * 200) / (columnNum - 1);
-            collection.style.gridTemplateColumns = `repeat(${columnNum}, 200px)`;
-            collection.style.columnGap = `${columnGap}px`;
-
-            window.addEventListener("resize", () => {
-                let collectionWidth = collection.clientWidth;
-                let columnNum = ~~(collectionWidth / 220);
-                let columnGap = (collectionWidth - columnNum * 200) / (columnNum - 1);
+            if (window.innerWidth > 699) {
                 collection.style.gridTemplateColumns = `repeat(${columnNum}, 200px)`;
                 collection.style.columnGap = `${columnGap}px`;
+            } else {
+                collection.style = ""
+            }
+
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 699) {
+                    let collectionWidth = collection.clientWidth;
+                    let columnNum = ~~(collectionWidth / 220);
+                    let columnGap = (collectionWidth - columnNum * 200) / (columnNum - 1);
+                
+                    collection.style.gridTemplateColumns = `repeat(${columnNum}, 200px)`;
+                    collection.style.columnGap = `${columnGap}px`;
+                } else {
+                    collection.style = ""
+                }
             });
         </script>
         <% collection.forEach((pokemon) => { %>
@@ -141,6 +151,13 @@
             <button id="species-info-btn">Species Info >></button>
         </div>
         <div class="evolution-popup" tabindex="0">
+            <img
+                src="/img/close.svg"
+                id="close-evolution"
+                alt="Close choose evolution panel"
+                role="button"
+                tabindex="0"
+            />
             <h2>Choose Your Evolution</h2>
             <div class="evolution-options"></div>
         </div>

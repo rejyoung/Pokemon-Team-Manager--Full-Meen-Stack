@@ -1,6 +1,9 @@
 /**********************/
 /* Trainer Collection */
 /**********************/
+main {
+    padding: 0;
+}
 
 h1 {
     font-size: 2.5rem;
@@ -66,12 +69,14 @@ h1 {
 .collection {
     margin-top: 275px;
     width: 100vw;
+    padding: 2vw;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .collection::after {
-    width: 46vw;
+    width: 45vw;
     height: 60vw;
     content: "";
 }
@@ -82,11 +87,11 @@ h1 {
 
 .pokemon {
     position: relative;
-    width: 46vw;
+    width: 45vw;
 }
 
 .collection-pokemon {
-    width: 46vw;
+    width: 45vw;
     height: 60vw;
     margin-bottom: 10vw;
     border: solid var(--pokemon-blue) 5px;
@@ -163,7 +168,7 @@ h1 {
 }
 
 .level-options {
-    height: 250px;
+    height: calc(60vw - 5px);
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -184,9 +189,9 @@ h1 {
 
 .side-buttons {
     position: absolute;
-    bottom: -9vw;
+    bottom: -8vw;
     left: -5px;
-    width: 46vw;
+    width: 45vw;
     border-radius: 0 0 5px 5px;
     height: 8vw;
     padding: 5px;

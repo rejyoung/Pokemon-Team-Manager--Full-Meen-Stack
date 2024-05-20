@@ -72,32 +72,36 @@
                                                 alt="Pokémon nicknamed <%=pokemon.Nickname%>"
                                                 src="<%=pokemon.ImgURL%>"
                                             />
-                                            <div class="nickname">
-                                                <h4
-                                                    id="nickname<%=pokemon._id%>"
-                                                >
-                                                    <%=pokemon.Nickname%>
-                                                </h4>
-                                                <%if(isOwnProfile) {%>
-                                                <input
-                                                    tabindex="0"
-                                                    type="text"
-                                                    id="edit-<%=pokemon._id %>"
-                                                    data-pokemon-id="<%=pokemon._id%>"
-                                                    class="edit-box"
-                                                    value="<%=pokemon.Nickname%>"
-                                                />
-                                                <img
-                                                    class="edit-name"
-                                                    data-input-box-id="edit-<%=pokemon._id%>"
-                                                    src="/img/edit.svg"
-                                                    alt="Edit nickname"
-                                                    tabindex="0"
-                                                    role="button"
-                                                />
-                                                <%}%>
+                                            <div class="name-and-level">
+                                                <div class="nickname">
+                                                    <h4
+                                                        id="nickname<%=pokemon._id%>"
+                                                    >
+                                                        <%=pokemon.Nickname%>
+                                                    </h4>
+                                                    <%if(isOwnProfile) {%>
+                                                    <input
+                                                        tabindex="0"
+                                                        type="text"
+                                                        id="edit-<%=pokemon._id %>"
+                                                        data-pokemon-id="<%=pokemon._id%>"
+                                                        class="edit-box"
+                                                        value="<%=pokemon.Nickname%>"
+                                                    />
+                                                    <img
+                                                        class="edit-name"
+                                                        data-input-box-id="edit-<%=pokemon._id%>"
+                                                        src="/img/edit.svg"
+                                                        alt="Edit nickname"
+                                                        tabindex="0"
+                                                        role="button"
+                                                    />
+                                                    <%}%>
+                                                </div>
+                                                <h5>
+                                                    Level <%= pokemon.Level %>
+                                                </h5>
                                             </div>
-                                            <h5>Level <%= pokemon.Level %></h5>
                                             <img
                                                 src="/img/info-blue.svg"
                                                 class="info-btn"
@@ -117,7 +121,11 @@
                                         Manage Profile
                                     </button>
                                     <button id="manage-team">
-                                        Manage Pokémon Collection
+                                        Manage
+                                        <span class="manage-pokemon-word"
+                                            >Pokémon</span
+                                        >
+                                        Collection
                                     </button>
                                     <%}%>
                                 </div>

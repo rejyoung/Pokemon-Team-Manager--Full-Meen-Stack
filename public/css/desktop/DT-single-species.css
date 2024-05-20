@@ -3,69 +3,77 @@
 /*******************/
 
 .pokemon-details {
-  display: flex;
-  max-width: 800px;
-  margin: 30px auto 0 auto;
-  background-color: white;
-  border-radius: 30px;
-  padding: 30px;
+    display: flex;
+    max-width: 800px;
+    width: 90vw;
+    margin: 30px auto 0 auto;
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+}
+.pokemon-details img {
+    width: 380px;
+    height: auto;
 }
 
 .poke-info {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .poke-info > p:not(.type) {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .poke-info > p {
-  font-style: italic;
-  font-size: 1.5rem;
-  margin-bottom: 0;
+    font-style: italic;
+    font-size: 1.5rem;
+    margin-bottom: 0;
 }
 
 .poke-info h3 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  margin-top: 0;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-top: 0;
 }
 
 .poke-info p span {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .poke-info h5 {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .back-btn {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .pseudo-button {
-  margin-right: auto;
-  margin-left: auto;
-  color: white;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
 }
 .pseudo-button:visited {
-  margin-right: auto;
-  margin-left: auto;
-  color: white;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
 }
 
 .species-owners {
-  background-color: lightgray;
-  padding: 10px;
-  min-height: 100px;
-  max-height: 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
-  grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
-  overflow-y: scroll;
+    background-color: lightgray;
+    padding: 10px;
+    min-height: 100px;
+    max-height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 750px) {
 }

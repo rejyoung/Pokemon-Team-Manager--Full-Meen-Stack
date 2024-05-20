@@ -1,0 +1,104 @@
+/*******************/
+/* Species Details */
+/*******************/
+
+.pokemon-details {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 94vw;
+    height: calc(90dvh - 70px);
+    margin: 70px auto 0 auto;
+    background-color: white;
+    border-radius: 30px;
+    padding: 4vw;
+}
+
+.pokemon-details img {
+    height: 45dvh;
+    width: auto;
+}
+
+.poke-info {
+    flex-grow: 1;
+    width: 86vw;
+}
+
+.poke-info > p:not(.type) {
+    margin-top: 0;
+}
+
+.poke-info > p {
+    font-style: italic;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.poke-info h3 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.poke-info p span {
+    font-weight: 700;
+}
+
+.poke-info h5 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info-and-types {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.types {
+    flex-shrink: 1;
+}
+
+.type {
+    max-width: 30vw;
+}
+
+.back-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pseudo-button {
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+}
+.pseudo-button:visited {
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+}
+
+.owners-container {
+    flex-grow: 1;
+}
+
+.species-owners {
+    background-color: lightgray;
+    padding: 10px;
+    min-height: 100px;
+    max-height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
+    overflow-y: scroll;
+}
+
+@media (min-aspect-ratio: 15/32) {
+    .pokemon-details img {
+        height: 30dvh;
+    }
+}

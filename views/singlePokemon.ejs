@@ -22,19 +22,27 @@
           <!-- prettier-ignore -->
           <% let pokeName = pokemon.Name.startsWith('mr.') ? pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1, 4) + pokemon.Name[4].toUpperCase() + pokemon.Name.slice(5): pokemon.Name[0].toUpperCase() + pokemon.Name.slice(1)%>
           <p>Species</p>
-          <h3><%=pokeName%></h3>
-          <p>Pokedéx No. <span><%=String(pokemon.PokedexID).padStart(4, "0")%></span></p>
-          <!-- <h4>#<%=String(pokemon.PokedexID).padStart(4, "0")%></h4> -->
-          <%pokemon.Type.forEach(type => { %>
-          <p class="type <%=type%>"><%=type%></p>
-          <%})%>
-          <h5>Owners</h3>
-          <div class="species-owners">
-            <% trainers.forEach((trainer) => { %>
-            <div>
-              <a href="/trainer/<%=trainer.Username%>"> <%= trainer.DisplayName %> </a>
+          <div class="info-and-types">
+            <div class="name-and-num">
+              <h3><%=pokeName%></h3>
+              <p>Pokedéx No. <span><%=String(pokemon.PokedexID).padStart(4, "0")%></span></p>
+              <!-- <h4>#<%=String(pokemon.PokedexID).padStart(4, "0")%></h4> -->
             </div>
-            <% }) %>
+            <div class="types">
+              <%pokemon.Type.forEach(type => { %>
+              <p class="type <%=type%>"><%=type%></p>
+              <%})%>
+            </div>
+          </div>
+          <div class="owners-container">
+            <h5>Owners</h3>
+            <div class="species-owners">
+              <% trainers.forEach((trainer) => { %>
+              <div>
+                <a href="/trainer/<%=trainer.Username%>"> <%= trainer.DisplayName %> </a>
+              </div>
+              <% }) %>
+          </div>
           </div>
         </div>
         <img alt="A typical <%=pokeName%>" src="<%=pokemon.ImgPath%>">

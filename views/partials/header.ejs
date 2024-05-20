@@ -1,42 +1,42 @@
 <header>
-  <a href="/" aria-label="Go to homepage" class="logo-link">
-    <img src="/img/team-manager-2x.png" class="logo" alt="" />
-  </a>
-  <img
-    id="menu-button"
-    alt="Expand or collapse menu"
-    src="/img/menu-button.svg"
-    role="button"
-    tabindex="0"
-  />
-  <nav>
-    <ul>
-      <li>
-        <a href="/"><p>Home</p></a>
-      </li>
-      <li>
-        <a href="/pokedex"><p>Pokédex</p></a>
-      </li>
-      <li>
-        <a href="/trainers"><p>Trainers</p></a>
-      </li>
-      <%if(isLoggedIn) {%>
-      <li>
-        <a href="/trainer/<%=username%>"><p>My Trainer Profile</p></a>
-      </li>
-      <li>
-        <div id="logout">
-          <p>Log Out</p>
-        </div>
-      </li>
-      <%} else {%>
-      <li>
-        <a href="/create-profile"><p>Create New Trainer Profile</p></a>
-      </li>
-      <li>
-        <a href="/login"><p>Log In</p></a>
-      </li>
-      <%}%>
-    </ul>
-  </nav>
+    <a href="/" aria-label="Go to homepage" class="logo-link">
+        <img src="/img/team-manager-2x.png" class="logo" alt="" />
+    </a>
+    <img
+        id="menu-button"
+        alt="Expand or collapse menu"
+        src="/img/menu-button.svg"
+        role="button"
+        tabindex="0"
+    />
+    <nav>
+        <ul>
+            <li>
+                <a href="/"><p>Home</p></a>
+            </li>
+            <li>
+                <a href="/pokedex"><p>Pokédex</p></a>
+            </li>
+            <li>
+                <a href="/trainers"><p>Trainers</p></a>
+            </li>
+            <%if(isLoggedIn) {%>
+            <li>
+                <a href="/trainer/<%=username%>"><p>My Trainer Profile</p></a>
+            </li>
+            <li>
+                <div id="logout">
+                    <p>Log Out</p>
+                </div>
+            </li>
+            <%} else {%>
+            <li>
+                <a href="/create-profile"><p>Create New Trainer Profile</p></a>
+            </li>
+            <li>
+                <a href="/login"><p>Log In</p></a>
+            </li>
+            <%}%>
+        </ul>
+    </nav>
 </header>

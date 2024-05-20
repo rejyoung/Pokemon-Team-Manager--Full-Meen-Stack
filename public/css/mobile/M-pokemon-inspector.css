@@ -163,3 +163,25 @@
 #species-info-btn {
     display: none;
 }
+
+@media (min-aspect-ratio: 10/19) {
+    .pokemon-inspector {
+        position: absolute;
+        height: auto;
+    }
+
+    .pokemon-inspector-content {
+        height: 930px;
+    }
+
+    .pokemon-inspector-details {
+        min-height: 598.15px;
+    }
+
+    .name-and-pic img {
+        max-width: 300px;
+    }
+    .species-info {
+        min-height: 312.84px;
+    }
+}
