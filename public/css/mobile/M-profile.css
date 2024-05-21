@@ -150,7 +150,7 @@ main {
 .edit-box {
     display: none;
     position: absolute;
-    width: 7vw;
+    width: 50%;
     font-family: "Asap Condensed", sans-serif;
     font-weight: 700;
     font-size: 1rem;
