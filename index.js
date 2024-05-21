@@ -26,15 +26,16 @@ app.use(cookieParser());
 */
 let redisStore = new RedisStore({ client: redisClient, prefix: "pokemonTM:" });
 app.use(
-  session({
-    store: redisStore,
-    secret: process.env.SESSION_SECRET_KEY,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000, //24 hours
-    },
-  })
+    session({
+        store: redisStore,
+        secret: process.env.SESSION_SECRET_KEY,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: auto,
+            maxAge: 24 * 60 * 60 * 1000, //24 hours
+        },
+    })
 );
 
 /*
@@ -58,7 +59,7 @@ app.use("/api/pokemon", pokemonRouter);
 const PORT = 10000;
 
 connectToMongoDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`server is on port ${PORT}`);
-  });
+    app.listen(PORT, () => {
+        console.log(`server is on port ${PORT}`);
+    });
 });
