@@ -417,6 +417,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                 } else {
                                     evolutionPopup.style.height =
                                         Math.ceil(evNum / 3) * 16 + 13 + "dvh";
+                                    evolutionPopup.style.minHeight =
+                                        Math.ceil(evNum / 3) * 135 + 110 + "px";
                                     evolutionPopup.style.top =
                                         (100 -
                                             (Math.ceil(evNum / 3) * 16 + 13)) /
@@ -584,12 +586,16 @@ document.addEventListener("DOMContentLoaded", () => {
                         // prettier-ignore
                         speciesInfo.innerHTML = `
               <div class="species-info-container">
-                <p class="species-label">Species</p>
-                <h3>${pokeName}</h3>
-                <p class="species-pokedex">Pokedex #${String(species.PokedexID).padStart(4, "0")}</p>
-                <h4>Teams On</h4>
-                <div class="owners-box">
-                  ${trainers}
+                <div class="species-stats">
+                  <p class="species-label">Species</p>
+                  <h3>${pokeName}</h3>
+                  <p class="species-pokedex">Pokedex #${String(species.PokedexID).padStart(4, "0")}</p>
+                </div>
+                <div class="species-teams">
+                  <h4>Teams On</h4>
+                  <div class="owners-box">
+                    ${trainers}
+                  </div>
                 </div>
               </div>
             `;

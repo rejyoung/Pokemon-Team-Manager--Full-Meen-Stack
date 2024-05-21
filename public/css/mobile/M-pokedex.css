@@ -9,7 +9,8 @@ h1 {
     top: 70px;
     left: 0;
     width: 100%;
-    height: 75px;
+    padding-top: 10px;
+    height: 65px;
     z-index: 7;
     color: white;
     background-color: var(--pokemon-blue, blue);
@@ -22,7 +23,7 @@ h1 {
     align-items: center;
     position: fixed;
     left: 0;
-    top: 145px;
+    top: 135px;
     width: 100%;
     height: 50px;
     background-color: var(--pokemon-blue, blue);

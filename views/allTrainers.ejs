@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("./partials/head") %>
-    <link
-      rel="stylesheet"
-      href="/css/mobile/M-all-trainers.css"
-      media="screen and (max-width: 699px)"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/desktop/DT-all-trainers.css"
-      media="screen and (min-width: 700px)"
-    />
-  </head>
-  <body>
-    <%- include("./partials/header") %>
+    <head>
+        <%- include("./partials/head") %>
+        <link
+            rel="stylesheet"
+            href="/css/mobile/M-all-trainers.css"
+            media="screen and (max-width: 699px)"
+        />
+        <link
+            rel="stylesheet"
+            href="/css/desktop/DT-all-trainers.css"
+            media="screen and (min-width: 700px)"
+        />
+    </head>
+    <body>
+        <%- include("./partials/header") %>
 
-    <main>
-      <h1>Active Trainers</h1>
+        <main>
+            <h1>Active Trainers</h1>
 
-      <div class="all-trainers">
-        <script>
-          const allTrainers = document.querySelector(".all-trainers");
-          let trainersWidth = allTrainers.clientWidth - 60;
-          let columnNum = ~~(trainersWidth / 320);
-          let columnGap = (trainersWidth - columnNum * 300) / (columnNum - 1);
-          allTrainers.style.gridTemplateColumns = `repeat(${columnNum}, 300px)`;
-          allTrainers.style.columnGap = `${columnGap}px`;
+            <div class="all-trainers">
+                <script>
+                    const allTrainers = document.querySelector(".all-trainers");
+                    let trainersWidth = allTrainers.clientWidth - 60;
+                    let columnNum = ~~(trainersWidth / 320);
+                    let columnGap =
+                        (trainersWidth - columnNum * 300) / (columnNum - 1);
+                    allTrainers.style.gridTemplateColumns = `repeat(${columnNum}, 300px)`;
+                    allTrainers.style.columnGap = `${columnGap}px`;
 
-          window.addEventListener("resize", () => {
-            let trainersWidth = allTrainers.clientWidth - 60;
-            console.log(trainersWidth);
-            let columnNum = ~~(trainersWidth / 320);
-            console.log(columnNum);
-            let columnGap = (trainersWidth - columnNum * 300) / (columnNum - 1);
-            console.log(columnGap);
-            allTrainers.style.gridTemplateColumns = `repeat(${columnNum}, 300px)`;
-            allTrainers.style.columnGap = `${columnGap}px`;
-          });
-        </script>
-        <% trainers.forEach((trainer) => { %>
-        <div class="trainer-div <%=trainer.Region%>" id="<%=trainer.Username%>">
-          <img src="<%=trainer.ProfilePicPath%>" />
-          <!-- prettier-ignore -->
-          <% let trainerName = trainer.DisplayName[0].toUpperCase() + trainer.DisplayName.slice(1)%>
-          <div class="trainer-text">
-            <h3><%=trainerName%></h3>
-            <h4><%=trainer.Region%></h4>
-            <!-- <h5>Pokemon in Collection</h5> -->
-            <p>
-              <b><%=trainer.PokemonCollection.length%></b> Pokémon in collection
-            </p>
-          </div>
-        </div>
-        <% }) %>
-      </div>
-    </main>
-    <%- include("./partials/footer")%>
-    <script src="/js/allTrainers.js"></script>
-  </body>
+                    window.addEventListener("resize", () => {
+                        let trainersWidth = allTrainers.clientWidth - 60;
+                        console.log(trainersWidth);
+                        let columnNum = ~~(trainersWidth / 320);
+                        console.log(columnNum);
+                        let columnGap =
+                            (trainersWidth - columnNum * 300) / (columnNum - 1);
+                        console.log(columnGap);
+                        allTrainers.style.gridTemplateColumns = `repeat(${columnNum}, 300px)`;
+                        allTrainers.style.columnGap = `${columnGap}px`;
+                    });
+                </script>
+                <% trainers.forEach((trainer) => { %>
+                <div
+                    class="trainer-div <%=trainer.Region%>"
+                    id="<%=trainer.Username%>"
+                >
+                    <img
+                        src="<%=trainer.ProfilePicPath%>"
+                        alt="profile picture"
+                    />
+                    <!-- prettier-ignore -->
+                    <% let trainerName = trainer.DisplayName[0].toUpperCase() + trainer.DisplayName.slice(1)%>
+                    <div class="trainer-text">
+                        <h3><%=trainerName%></h3>
+                        <h4><%=trainer.Region%></h4>
+                        <!-- <h5>Pokemon in Collection</h5> -->
+                        <p>
+                            <b><%=trainer.PokemonCollection.length%></b> Pokémon
+                            in collection
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </main>
+        <%- include("./partials/footer")%>
+        <script src="/js/allTrainers.js"></script>
+    </body>
 </html>

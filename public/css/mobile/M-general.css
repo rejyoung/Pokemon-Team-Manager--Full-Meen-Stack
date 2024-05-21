@@ -49,6 +49,7 @@ body {
     padding: 0;
     margin: 0;
     width: 100vw;
+    min-height: 100dvh;
     font-family: "Asap Condensed", sans-serif;
     background-color: #fcce0074;
 }
@@ -60,7 +61,7 @@ main {
 
 h1 {
     text-align: center;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 0;
 }
 

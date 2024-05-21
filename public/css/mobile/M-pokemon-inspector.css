@@ -43,26 +43,26 @@
 } */
 
 .name-and-pic img {
-    width: 60vw;
+    width: 50vw;
     height: auto;
 }
 
 .name-and-pic p {
-    margin-top: -20px;
+    margin-top: -10px;
     margin-bottom: 0;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-style: italic;
     font-weight: 300;
 }
 
 .name-and-pic h3 {
-    font-size: 3rem;
+    font-size: 2rem;
     display: inline-block;
     margin: 0;
 }
 
 .name-and-pic h4 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0;
 }
 
@@ -86,15 +86,15 @@
 
 .poke-info h4 {
     font-size: 1.25rem;
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 10px;
 }
 
 .moves {
     background-color: lightgray;
     padding: 10px;
-    min-height: 140px;
-    max-height: 140px;
+    min-height: 80px;
+    max-height: 80px;
     display: grid;
     width: calc(100vw - 40px);
     grid-template-columns: 1fr 1fr;
@@ -120,10 +120,12 @@
     height: 30dvh;
     width: calc(100vw - 40px);
     margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .species-label {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-style: italic;
     font-weight: 300;
     margin-bottom: 5px;
@@ -131,32 +133,29 @@
 }
 
 .species-info h3 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .species-pokedex {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-style: italic;
     margin: 0;
 }
 
-.species-info h4 {
+.species-teams h4 {
     font-size: 1.25rem;
-    margin-top: 20px;
+    margin-top: 0;
+    height: 20px;
     margin-bottom: 9px;
 }
 
 .owners-box {
     background-color: lightgray;
     padding: 10px;
-    min-height: 140px;
-    max-height: 140px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
-    grid-template-rows: repeat(auto-fill, minmax(1.5rem, auto));
+    min-height: calc(35dvh - 60px);
+    max-height: calc(35dvh - 60px);
     overflow-y: scroll;
 }
 
@@ -164,7 +163,7 @@
     display: none;
 }
 
-@media (min-aspect-ratio: 10/19) {
+/* @media (min-aspect-ratio: 10/19) {
     .pokemon-inspector {
         position: absolute;
         height: auto;
@@ -184,4 +183,4 @@
     .species-info {
         min-height: 312.84px;
     }
-}
+} */
