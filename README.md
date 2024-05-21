@@ -1,6 +1,6 @@
 # Pokémon Team Manager
 
-Pokémon Team Manager is a full-stack web app built with MongoDB, Express, EJS, and Node.js. It also integrates with the Pokémon API, which is where much of the data and all the pokemon images came from, and utilizes both front- and back-end javascript. The concept is that you can manage a pokemon team you're using in one of the officially licensed games. A live version of the site can be viewed here at https://pokemon-team-manager-full-meen-stack.onrender.com/
+Pokémon Team Manager is a full-stack web app built with MongoDB, Express, EJS, and Node.js. It also integrates with the Pokémon API, which is where much of the data and all the pokemon images came from, and utilizes both front- and back-end javascript. The concept is that you can manage a pokemon team you're using in one of the officially licensed games. A live version of the site can be viewed here at http://ptm.ryanyoung.codes.
 
 ## Database Functionality
 
