@@ -56,7 +56,7 @@ app.use("/api/pokemon", pokemonRouter);
 /*
     APP LISTENING
 */
-const PORT = 10000;
+const PORT = process.env.PORT;
 
 connectToMongoDB().then(() => {
     app.listen(PORT, () => {
