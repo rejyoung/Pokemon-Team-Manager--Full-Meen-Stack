@@ -4,7 +4,7 @@ Pokémon Team Manager is a full-stack web app built with MongoDB, Express, EJS, 
 
 ## Database Functionality
 
-Part of my purpose in building this site was to practice working with relational databases and user accounts. There are four databases in total: one to store all pokémon species data, one to store all data related to trainers and their pokémon teams, one to store temporary user tokens, and another to store session data. The last is a Redis database.
+Part of my purpose in building this site was to practice working with interrelated mongodb collections and creating secure user accounts. There are three collections in total: one to store all pokémon species data, one to store all data related to trainers and their pokémon teams, and one to store temporary user tokens. In addition, there is a Redis database to store session data.
 
 ## User Accounts and Security
 
